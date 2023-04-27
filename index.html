@@ -51,6 +51,12 @@
                 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
             })(window, document, "clarity", "script", "g7v05eq492");
         </script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('.sidenav');
+                var instances = M.Sidenav.init(elems);
+            });
+        </script>
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link rel="stylesheet" href="css/index.css">
@@ -58,6 +64,20 @@
     <body>
         <container>
             <main>
+                <nav>
+                    <div class="nav-wrapper indigo lighten-4">
+                        <a href="#!" class="brand-logo">&nbsp;&nbsp;zero</a>
+                        <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                        <ul class="right hide-on-med-and-down">
+                            <li><a href="#">Activity</a></li>
+                            <li><a href="#">System Information</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <ul class="sidenav indigo lighten-4" id="mobile">
+                    <li><a href="#">Activity</a></li>
+                    <li><a href="#">System Information</a></li>
+                </ul>    
                 <div class="container">
                     <div class="row">
                         <div class="col s12">
