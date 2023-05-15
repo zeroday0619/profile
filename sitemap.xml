@@ -9,7 +9,13 @@
 
 <url>
   <loc>https://zeroday0619.dev/</loc>
-  <lastmod>2023-03-08T22:23:29+00:00</lastmod>
+  <lastmod>2023-05-15T11:50:45+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://zeroday0619.dev/activity.html</loc>
+  <lastmod>2023-05-15T11:50:45+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 
 
