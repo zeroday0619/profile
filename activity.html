@@ -51,18 +51,6 @@
                 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
             })(window, document, "clarity", "script", "g7v05eq492");
         </script>
-        <script type="text/javascript">
-            document.addEventListener('DOMContentLoaded', function() {
-                var elems = document.querySelectorAll('.sidenav');
-                var instances = M.Sidenav.init(elems);
-            });
-        </script>
-        <script type="text/javascript">
-            document.addEventListener('DOMContentLoaded', function() {
-                var elems = document.querySelectorAll('.modal');
-                var instances = M.Modal.init(elems);
-            });
-        </script>
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link rel="stylesheet" href="css/index.css">
@@ -72,12 +60,12 @@
             <main>
                 <nav>
                     <div class="nav-wrapper indigo lighten-4">
-                        <a href="https://zeroday0619.dev" class="brand-logo">&nbsp;&nbsp;zero</a>
+                        <a href="https://zeroday0619.dev" class="brand-logo black-text">&nbsp;&nbsp;zero</a>
                     </div>
                 </nav>
                 <div class="row">
                     <div class="col 6">
-                        <img class="responsive-img" src="https://media.discordapp.net/attachments/923238287831859270/1105172186265813002/178296fb1414a5813.jpg?width=413&height=627">
+                        <img class="responsive-img" alt="New Game!, C++을 완전히 이해해 버린 것 같아 짤" src="https://media.discordapp.net/attachments/923238287831859270/1105172186265813002/178296fb1414a5813.jpg?width=413&height=627">
                     </div>
                     <div class="col 6">
                         <table class="highlight">
@@ -89,16 +77,16 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><strong>Freelancer Developer</strong></td>
-                                    <td><strong>Oct. 2017 ~ now</strong></td>
+                                    <td class="black-text text-accent-4"><strong>Freelancer Developer</strong></td>
+                                    <td class="black-text text-accent-4"><strong>Oct. 2017 ~ now</strong></td>
                                 </tr>
                                 <tr>
-                                    <td><strong><a href="https://ubuntu-kr.org/en/">Ubuntu Korea Community</a>, <a href="https://discourse.ubuntu-kr.org">forum</a> moderator (Apprenticeship)</strong></td>
-                                    <td><strong>May. 2023 ~ now</strong></td>
+                                    <td class="black-text text-accent-4"><strong> <a href="https://ubuntu-kr.org/en/" class="red-text text-accent-4">Ubuntu Korea Community</a>, <a href="https://discourse.ubuntu-kr.org" class="red-text text-accent-4">forum</a> moderator (Apprenticeship)</strong></td>
+                                    <td class="black-text text-accent-4"><strong>May. 2023 ~ now</strong></td>
                                 </tr>
                                 <tr>
-                                    <td><strong><a class="waves-effect waves-light modal-trigger" href="#modal1">Kyunghee High School ProBG Developer & Director</a></strong></td>
-                                    <td><strong>Mar. 2019 ~ Jan. 2022</strong></td>
+                                    <td><strong><a class="waves-effect waves-light modal-trigger deep-purple-text text-accent-4" href="#modal1">Kyunghee High School ProBG Developer & Director</a></strong></td>
+                                    <td class="black-text text-accent-4"><strong>Mar. 2019 ~ Jan. 2022</strong></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -107,18 +95,28 @@
                             <div class="modal-content">
                                 <h4>Project <strong>KyungheeLife Dashboard</strong></h4>
                                 <h5><a href="https://github.com/kyungheelife/dashboard">source code >> https://github.com/kyungheelife/dashboard</a></h5>
-                                <video controls width="100%">
-                                    <source src="video/kyungheelife-demo.mp4" type="video/mp4">
-                                </video>
+                                
+                                <section class="player">                                
+                                    <video controls width="100%">
+                                        <source src="video/kyungheelife-demo.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="controls">
+                                        <button class="playpause waves-effect waves-light btn">Play</button>
+                                        <button class="stop waves-effect waves-light btn">Stop</button>
+                                        <button class="rwd waves-effect waves-light btn">Rwd</button>
+                                        <button class="fwd waves-effect waves-light btn">Fwd</button>
+                                        <div class="time">00:00</div>    
+                                    </div>
+                                </section>
                                 <table class="highlight">
                                     <thead>
                                         <tr><h6>Tech Stack</h6></tr>
                                     </thead>
                                     <tbody>
                                         <td>
-                                            <img src="https://camo.githubusercontent.com/b494db70c3458ab7bc3666cbb459eeaafabf3cee73ce4d3c0506c0687af1c393/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f547970657363726970742d626c61636b3f7374796c653d666f722d7468652d6261646765266c6f676f3d74797065736372697074">
-                                            <img src="https://camo.githubusercontent.com/6658f5090ace1c668fca1b18636b9f86a085004cf87781c98f3a1024d9c347c9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656163742d626c61636b3f7374796c653d666f722d7468652d6261646765266c6f676f3d5265616374">
-                                            <img src="https://camo.githubusercontent.com/b2f59e52e0c126fc41a14ee104bc0a53f468325a129fe450edeaae7ef1f4623f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f456c656374726f6e2d626c61636b3f7374796c653d666f722d7468652d6261646765266c6f676f3d456c656374726f6e">
+                                            <img alt="Typescript" src="https://camo.githubusercontent.com/b494db70c3458ab7bc3666cbb459eeaafabf3cee73ce4d3c0506c0687af1c393/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f547970657363726970742d626c61636b3f7374796c653d666f722d7468652d6261646765266c6f676f3d74797065736372697074">
+                                            <img alt="React" src="https://camo.githubusercontent.com/6658f5090ace1c668fca1b18636b9f86a085004cf87781c98f3a1024d9c347c9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656163742d626c61636b3f7374796c653d666f722d7468652d6261646765266c6f676f3d5265616374">
+                                            <img alt="Electron" src="https://camo.githubusercontent.com/b2f59e52e0c126fc41a14ee104bc0a53f468325a129fe450edeaae7ef1f4623f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f456c656374726f6e2d626c61636b3f7374796c653d666f722d7468652d6261646765266c6f676f3d456c656374726f6e">
                                         </td>
                                     </tbody>
                                 </table>
@@ -135,29 +133,32 @@
             <div class="container">
                 <div class="row">
                     <div class="col l6 s12">
-                        <h5 class="white-text">introducing zero</h5>
-                        <p class="grey-text text-lighten-4">I'm just an average college student studying to become a Linux kernel developer.<br> Thank you for visiting my humble profile site.</p>
+                        <h5 class="black-text text-accent-4">introducing zero</h5>
+                        <p class="black-text text-accent-4">I'm just an average college student studying to become a Linux kernel developer.<br> Thank you for visiting my humble profile site.</p>
                     </div>
                     <div class="col l4 offset-l2 s12">
-                        <h5 class="white-text">Links</h5>
+                        <h5 class="black-text text-accent-4">Links</h5>
                         <ul>
-                            <li><a class="grey-text text-lighten-3" href="https://github.com/zeroday0619"><i class="fa-brands fa-github"></i> GitHub</a></li>
-                            <li><a class="grey-text text-lighten-3" href="https://git.silicon.moe/zeroday0619"><i class="fa-brands fa-gitlab"></i> GitLab</a></li>
-                            <li><a class="grey-text text-lighten-3" href="https://social.silicon.moe/@zeroday0619"><i class="fa-brands fa-mastodon"></i> @zeroday0619@silicon.moe</a></li>
-                            <li><a class="grey-text text-lighten-3" href="https://twitter.com/dev_zeroday0619"><i class="fa-brands fa-twitter"></i> @dev_zeroday0619</a></li>
+                            <li><a class="black-text text-accent-4" href="https://github.com/zeroday0619"><i class="fa-brands fa-github"></i> GitHub</a></li>
+                            <li><a class="black-text text-accent-4" href="https://git.silicon.moe/zeroday0619"><i class="fa-brands fa-gitlab"></i> GitLab</a></li>
+                            <li><a class="black-text text-accent-4" href="https://social.silicon.moe/@zeroday0619"><i class="fa-brands fa-mastodon"></i> @zeroday0619@silicon.moe</a></li>
+                            <li><a class="black-text text-accent-4" href="https://twitter.com/dev_zeroday0619"><i class="fa-brands fa-twitter"></i> @dev_zeroday0619</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="footer-copyright">
-                <div class="container">© 2023 zero, All rights reserved.<br>
-                    This site is <a href="https://github.com/zeroday0619/profile">open source</a>.
+                <div class="container black-text text-accent-4">© 2023 zero, All rights reserved.<br>
+                    This site is <a href="https://github.com/zeroday0619/profile" class="grey-text text-darken-4">open source</a>.
                 </div>
             </div>
         </footer>
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <script src="lib/all.min.js"></script><script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+        <script src="lib/base.js"></script>
+        <script src="lib/video.js"></script>
+        <script src="lib/all.min.js"></script>
+        <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
         <script type="text/javascript">
             if(!wcs_add) var wcs_add = {};
             wcs_add["wa"] = "169aa3907a7e8f0";
