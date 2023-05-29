@@ -7,7 +7,7 @@ main {
 footer {
     bottom: 0;
 }
-#box {
+#box #box2 {
     display: flex;
     min-height: 100%;
     flex-direction: column;
