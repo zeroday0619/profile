@@ -7,6 +7,12 @@ main {
 footer {
     bottom: 0;
 }
+iframe {
+    position: relative;
+    overflow: hidden;
+    min-width: 100%;
+    min-height: 50vh;
+}
 #box #box2 {
     display: flex;
     min-height: 100%;
