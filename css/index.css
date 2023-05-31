@@ -6,6 +6,7 @@ main {
 }
 footer {
     bottom: 0;
+    transform : translateY(100%);
 }
 iframe {
     position: relative;
@@ -37,6 +38,12 @@ iframe {
 }
 #collection-footer {
     border: 0;
+}
+#col-12-m12-l12 {
+    padding: 0;
+}
+#col-6 {
+    padding-left: 0;
 }
 /*
 #desc_side_top {
