@@ -14,7 +14,12 @@ iframe {
     min-width: 100%;
     min-height: 50vh;
 }
-#box #box2 {
+#box {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+}
+#box2 {
     display: flex;
     min-height: 100%;
     flex-direction: column;
@@ -44,6 +49,11 @@ iframe {
 }
 #col-6 {
     padding-left: 0;
+    padding-right: 0;
+}
+#col-6-warp {
+    padding-left: 0;
+    padding-right: 0;
 }
 /*
 #desc_side_top {
