@@ -1,3 +1,0 @@
-User-agent: *
-Allow:/
-sitemap: https://zeroday0619.dev/sitemap.xml
