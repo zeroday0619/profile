@@ -1,13 +1,19 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import { Html, Main, Head, NextScript } from 'next/document'
 
 export default function Document() {
-  return (
-    <Html lang="en">
-      <Head />
-      <body className="antialiased">
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  );
+    return (
+        <Html lang='kr'>
+            <Head/>
+            <link
+                rel="preload"
+                href="/fonts/PretendardVariable.woff2"
+                as="font"
+                crossOrigin=""
+            />
+            <body>
+                <Main />
+                <NextScript />
+            </body>
+        </Html>
+    );
 }
