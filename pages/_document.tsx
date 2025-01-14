@@ -2,7 +2,7 @@ import { Html, Main, Head, NextScript } from 'next/document'
 
 export default function Document() {
     return (
-        <Html lang='kr'>
+        <Html lang='kr' data-theme="cupcake">
             <Head/>
             <link
                 rel="preload"

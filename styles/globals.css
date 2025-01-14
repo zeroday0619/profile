@@ -25,6 +25,18 @@
   }
 }
 
+body {
+  background-color: var(--my-color);
+}
+
+:root {
+  --my-color: #fff;
+  /* or any other variables/style */
+}
+[data-theme='dark'] {
+  --my-color: #000;
+}
+
 body, html, #__next {
   font-family: "Pretendard", sans-serif;
   height: 100%;

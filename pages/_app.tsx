@@ -2,7 +2,7 @@ import "@/styles/globals.css";
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Layout from '@/layouts/layout'
-import { ThemeProvider } from "next-themes"
+import { useEffect } from 'react'
 
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -15,12 +15,9 @@ export default function App({ Component, pageProps }: AppProps) {
             <title>zeroday0619</title>
             <meta name="robots" content="index, follow" />
         </Head>
-        <ThemeProvider attribute="class">
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </ThemeProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </>
-
   );
 }
