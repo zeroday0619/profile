@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { themeChange } from 'theme-change'
-import SVG from "./Logos";
 
 
 export default function ThemeController() {
