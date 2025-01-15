@@ -10,12 +10,11 @@ export default function ThemeController() {
     return (
         <>
             <label className="flex cursor-pointer gap-2">
-                <button data-toggle-theme="light" data-act-class="ACTIVECLASS">
-                    <SVG logo={'light-button'} />
-                </button>
-                <button data-toggle-theme="dark" data-act-class="ACTIVECLASS">
-                    <SVG logo={'dark-button'} />
-                </button>
+                <select data-choose-theme className="select select-accent w-full max-w-xs">
+                    <option disabled selected>Theme</option>
+                    <option value="light" data-act-class="ACTIVECLASS">Light</option>
+                    <option value="dark" data-act-class="ACTIVECLASS">Dark</option>
+                </select>
             </label>
         </>
     );

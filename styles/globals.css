@@ -48,7 +48,7 @@ body, html, #__next {
 /* 메인 콘텐츠 영역 */
 main {
     flex: 1; /* 나머지 공간을 차지 */
-    padding: 2rem; /* 패딩 추가 */
+    padding: 0rem; /* 패딩 추가 */
 }
 footer {
   background-color: #333; /* 배경색 설정 */

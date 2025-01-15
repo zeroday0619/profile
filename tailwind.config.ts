@@ -24,6 +24,11 @@ export default {
   daisyui: {
     themes: [
       "light", "dark", "cupcake"
-    ]
+    ],
+    base: true,
+    styled: true,
+    utils: true,
+    logs: true,
+    themeRoot: ":root"
   }
 } satisfies Config;

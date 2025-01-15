@@ -8,7 +8,7 @@ type LayoutProps = {
 export default function Main({ children }: LayoutProps) {
     return (
         <>
-            <main className="mb-28 mt-4 flex flex-row items-center cursor-pointer">
+            <main className="mb-auto mt-0 mr-0">
                 <div className="content">{children}</div>
             </main>
         </>

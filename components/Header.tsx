@@ -4,13 +4,13 @@ import ThemeController from "./ThemeController"
 export default function Header() {
     return (
         <header>
-            <nav className="navbar bg-base-100">
+            <nav className="navbar bg-gray-700">
                 <div className="navbar-start">
                     <ActiveLink activeClassName="active" className="btn btn-ghost text-xl" href={'/'}>
-                        <h1>zeroday0619</h1>
+                        <h1 className="text-white">zeroday0619</h1>
                     </ActiveLink>
                     <ActiveLink activeClassName="active" className="btn btn-ghost text-xl" href={'/outsourcing'}>
-                        <p>외주</p>
+                        <p className="text-white">외주</p>
                     </ActiveLink>
                 </div>
                 <div className="navbar-end">
