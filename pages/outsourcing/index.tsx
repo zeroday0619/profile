@@ -25,21 +25,7 @@ export default function Outsourcing() {
                     <a href="https://open.kakao.com/o/ske9NHah" className="btn btn-primary">상담</a>
                     </div>
                 </div>
-            </div>
-            <div className="card bg-base-100 image-full w-auto shadow-xl">
-                <figure>
-                    <img
-                    src="/images/code.webp"
-                    alt="code"/>
-                </figure>
-                <div className="card-body">
-                    <h2 className="card-title">대학교 프로그래밍 과제 대행 서비스</h2>
-                    <p>Python, C, C++, JAVA등 다양한 언어를 사용한 프로그래밍 과제를 대행 해드립니다.</p>
-                    <div className="card-actions justify-end">
-                    <a href="https://open.kakao.com/o/ske9NHah" className="btn btn-primary">상담</a>
-                    </div>
-                </div>
-            </div>
+            </div>            
         </>
     );
 }
