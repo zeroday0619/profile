@@ -242,7 +242,7 @@ const Home = () => {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl font-bold mb-6 px-2">{t("소개", "About Me")}</h2>
           <div className="oneui-card p-8 oneui-animate-fade-in">
-            <div className="space-y-4" style={{ wordBreak: "keep-all" }}>
+            <div className="space-y-4">
               {paragraphs.map((text, index) => (
                 <p 
                   key={index} 
@@ -266,7 +266,7 @@ const Home = () => {
                 <h3 className="text-lg font-bold mb-3 text-primary">
                   {category.title[language]}
                 </h3>
-                <ul className="list-disc list-inside space-y-2 text-base-content/75 text-sm" style={{ wordBreak: "keep-all" }}>
+                <ul className="list-disc list-inside space-y-2 text-base-content/75 text-sm">
                   {category.items.map((item, idx) => (
                     <li key={idx}>{item[language]}</li>
                   ))}
@@ -299,7 +299,7 @@ const Home = () => {
                         </span>
                       )}
                     </div>
-                    <p className="text-base-content/80 mb-3" style={{ wordBreak: "keep-all" }}>
+                    <p className="text-base-content/80 mb-3">
                       {project.description[language]}
                     </p>
                     <ul className="list-disc list-inside space-y-1 text-base-content/70 text-sm">

@@ -59,7 +59,6 @@ const Outsourcing = () => {
                   <p 
                     key={index} 
                     className="text-base-content/80 leading-relaxed"
-                    style={{ wordBreak: "keep-all" }}
                   >
                     {text}
                   </p>
