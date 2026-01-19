@@ -1,52 +1,39 @@
-import Link, { LinkProps } from 'next/link'
-import { useRouter } from 'next/router'
-import { PropsWithChildren, useEffect, useState } from 'react'
+"use client";
 
+import Link, { type LinkProps } from "next/link";
+import { useRouter } from "next/router";
+import { type PropsWithChildren, useMemo } from "react";
 
-interface ActiveLinkProps extends LinkProps {
+type ActiveLinkProps = LinkProps & {
   activeClassName: string;
   className?: string;
-}
+};
+
 const ActiveLink = ({
   children,
   activeClassName,
-  className,
+  className = "",
   ...props
 }: PropsWithChildren<ActiveLinkProps>) => {
   const { asPath, isReady } = useRouter();
-  const [computedClassName, setComputedClassName] = useState(className);
 
-  useEffect(() => {
-    // Check if the router fields are updated client-side
-    if (isReady) {
-      // Dynamic route will be matched via props.as
-      // Static route will be matched via props.href
-      const linkPathname = new URL(
-        (props.as || props.href) as string,
-        location.href
-      ).pathname;
+  const computedClassName = useMemo(() => {
+    if (!isReady) return className;
 
-      // Using URL().pathname to get rid of query and hash
-      const activePathname = new URL(asPath, location.href).pathname;
+    const linkPathname = new URL(
+      (props.as || props.href) as string,
+      typeof window !== "undefined" ? window.location.href : "http://localhost"
+    ).pathname;
 
-      const newClassName =
-        linkPathname === activePathname
-          ? `${className} ${activeClassName}`.trim()
-          : className;
+    const activePathname = new URL(
+      asPath,
+      typeof window !== "undefined" ? window.location.href : "http://localhost"
+    ).pathname;
 
-      if (newClassName !== computedClassName) {
-        setComputedClassName(newClassName);
-      }
-    }
-  }, [
-    asPath,
-    isReady,
-    props.as,
-    props.href,
-    activeClassName,
-    className,
-    computedClassName,
-  ]);
+    return linkPathname === activePathname
+      ? `${className} ${activeClassName}`.trim()
+      : className;
+  }, [asPath, isReady, props.as, props.href, activeClassName, className]);
 
   return (
     <Link className={computedClassName} {...props}>

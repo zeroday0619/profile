@@ -2,59 +2,159 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
   font-family: "Pretendard";
   src: url("/fonts/PretendardVariable.woff2") format('woff2');
   font-display: swap;
 }
 
-.navigation {
-  & > a {
-    text-decoration: none;
-    color: whitesmoke;
-    padding: 0.8em 1rem;
-    display: inline-block;
-
-    &:hover:not(.active) {
-      background-color: #333;
-    }
-    &.active {
-      background-color: skyblue;
-    }
-  }
-}
-
-body {
-  background-color: var(--my-color);
-}
-
+/* OneUI Design System Variables */
 :root {
-  --my-color: #fff;
-  /* or any other variables/style */
-}
-[data-theme='dark'] {
-  --my-color: #000;
+  --oneui-primary: #0381FE;
+  --oneui-primary-dark: #0067D9;
+  --oneui-primary-light: #4BA3FF;
+  --oneui-bg: #F7F7F7;
+  --oneui-surface: #FFFFFF;
+  --oneui-focus: #F0F0F0;
+  --oneui-text-primary: #000000;
+  --oneui-text-secondary: #666666;
+  --oneui-border-radius: 26px;
+  --oneui-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+[data-theme='oneui-dark'] {
+  --oneui-primary: #4BA3FF;
+  --oneui-primary-dark: #0381FE;
+  --oneui-primary-light: #7ABBFF;
+  --oneui-bg: #000000;
+  --oneui-surface: #1C1C1E;
+  --oneui-focus: #2C2C2E;
+  --oneui-text-primary: #FFFFFF;
+  --oneui-text-secondary: #8E8E93;
+}
+
+/* Base Styles */
 body, html, #__next {
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   height: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
+  background-color: var(--oneui-bg);
+  color: var(--oneui-text-primary);
+  transition: var(--oneui-transition);
 }
 
-/* 메인 콘텐츠 영역 */
-main {
-    flex: 1; /* 나머지 공간을 차지 */
-    padding: 0rem; /* 패딩 추가 */
+/* OneUI Card Style */
+.oneui-card {
+  background: var(--oneui-surface);
+  border-radius: var(--oneui-border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: var(--oneui-transition);
 }
+
+.oneui-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* OneUI Button Style */
+.oneui-btn {
+  border-radius: 16px;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: var(--oneui-transition);
+  border: none;
+  cursor: pointer;
+}
+
+.oneui-btn-primary {
+  background: var(--oneui-primary);
+  color: white;
+}
+
+.oneui-btn-primary:hover {
+  background: var(--oneui-primary-dark);
+  transform: scale(1.02);
+}
+
+.oneui-btn-ghost {
+  background: transparent;
+  color: var(--oneui-text-primary);
+}
+
+.oneui-btn-ghost:hover {
+  background: var(--oneui-focus);
+}
+
+/* OneUI Focus Block */
+.oneui-focus-block {
+  background: var(--oneui-focus);
+  border-radius: var(--oneui-border-radius);
+  padding: 20px;
+}
+
+/* OneUI Navigation */
+.oneui-nav {
+  background: var(--oneui-surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection Color */
+::selection {
+  background: var(--oneui-primary);
+  color: white;
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  padding: 0;
+}
+
+/* Footer */
 footer {
-  background-color: #333; /* 배경색 설정 */
-  color: white; /* 텍스트 색상 설정 */
-  padding: 2rem; /* 패딩 설정 */
-  text-align: left; /* 텍스트 중앙 정렬 */
-  width: 100%; /* 전체 너비 */
-  margin-top: auto; /* 아래로 마진을 추가하여 푸터를 아래로 고정 */
+  background-color: var(--oneui-surface);
+  color: var(--oneui-text-primary);
+  padding: 2rem;
+  text-align: left;
+  width: 100%;
+  margin-top: auto;
+}
+
+/* OneUI Animations */
+@keyframes oneui-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes oneui-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.oneui-animate-fade-in {
+  animation: oneui-fade-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.oneui-animate-scale-in {
+  animation: oneui-scale-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }

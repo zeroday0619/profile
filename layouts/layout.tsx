@@ -1,19 +1,18 @@
-import Header from '@/components/Header'
+import type { ReactNode } from "react";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Main from "@/components/Main";
-import type { ReactNode } from 'react'
-
 
 type LayoutProps = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
-export default function Layout({ children }: LayoutProps) {
-    return (
-        <>
-            <Header />
-            <Main children={children} />
-            <Footer />
-        </>
-    );
-}
+const Layout = ({ children }: LayoutProps) => (
+  <>
+    <Header />
+    <Main>{children}</Main>
+    <Footer />
+  </>
+);
+
+export default Layout;
