@@ -19,7 +19,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-6 py-10">
         <div className="text-center">
           <h3 className="text-lg font-bold mb-5 text-primary">
-            {t("연락처", "Contact")}
+            {t("연락처", "Contacts")}
           </h3>
           <div className="flex flex-wrap gap-4 justify-center">
             {SOCIAL_LINKS.map(({ href, logo, label }) => (
