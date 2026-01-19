@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
+import SEO from "@/components/SEO";
 
 const SERVICE_DESCRIPTIONS = {
   ko: [
@@ -16,7 +17,7 @@ const SERVICES = {
   ko: [
     {
       title: "FastAPI 서비스",
-      description: "FastAPI 프레임워크를 사용한 고성능 RESTful API를 제작해드립니다.",
+      description: "FastAPI 프레임워크를 사용한 웹 어플리케이션를 제작해드립니다.",
       image: "https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png",
       features: ["빠른 성능", "자동 문서화", "타입 안정성"],
       consultLink: "https://open.kakao.com/o/ske9NHah",
@@ -25,8 +26,8 @@ const SERVICES = {
   ],
   en: [
     {
-      title: "FastAPI Service",
-      description: "I build high-performance RESTful APIs using the FastAPI framework.",
+      title: "FastAPI",
+      description: "I offer web application development services using the FastAPI framework.",
       image: "https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png",
       features: ["Fast Performance", "Auto Documentation", "Type Safety"],
       consultLink: "https://open.kakao.com/o/ske9NHah",
@@ -40,7 +41,22 @@ const Outsourcing = () => {
   const descriptions = SERVICE_DESCRIPTIONS[language];
   const services = SERVICES[language];
 
+  const seoTitle = t("외주 서비스", "Outsourcing Services");
+  const seoDescription = t(
+    "FastAPI 기반 웹 어플리케이션 등 Python 맞춤형 솔루션 외주 서비스를 제공합니다.",
+    "We offer professional outsourced services for Python-based custom solutions, including FastAPI-powered web applications."
+  );
+
   return (
+    <>
+      <SEO
+        title={seoTitle}
+        description={seoDescription}
+        canonical="/outsourcing"
+        lang={language}
+        image="/images/code.webp"
+        imageAlt={t("코드 이미지", "Code image")}
+      />
     <div className="min-h-screen bg-base-200">
       {/* Hero Section */}
       <section className="pt-16 pb-8 px-6">
@@ -146,6 +162,7 @@ const Outsourcing = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

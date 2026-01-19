@@ -1,6 +1,7 @@
 import Image from "next/image";
 import SVG from "@/components/Logos";
 import { useLanguage } from "@/contexts/LanguageContext";
+import SEO from "@/components/SEO";
 
 type Language = "ko" | "en";
 
@@ -185,7 +186,22 @@ const Home = () => {
   const { language, t } = useLanguage();
   const paragraphs = INTRO_PARAGRAPHS[language];
 
+  const seoTitle = t("차의서", "Euiseo Cha");
+  const seoDescription = t(
+    "Python 소프트웨어 엔지니어 차의서 (zeroday0619).",
+    "Python software engineer Euiseo Cha (zeroday0619)."
+  );
+
   return (
+    <>
+      <SEO
+        title={seoTitle}
+        description={seoDescription}
+        canonical="/"
+        lang={language}
+        image="/images/profile.jpg"
+        imageAlt="Euiseo Cha profile photo"
+      />
     <div className="min-h-screen bg-base-200">
       {/* Hero Section - OneUI Style with viewing area at top */}
       <section className="pt-16 pb-8 px-6">
@@ -346,6 +362,7 @@ const Home = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 
