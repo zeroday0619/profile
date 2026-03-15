@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "daisyui";
 
 @font-face {
   font-family: "Pretendard";
@@ -22,6 +21,7 @@
   --oneui-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+[data-theme='dark'],
 [data-theme='oneui-dark'] {
   --oneui-primary: #4BA3FF;
   --oneui-primary-dark: #0381FE;
@@ -99,6 +99,235 @@ body, html, #__next {
   background: var(--oneui-surface);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+}
+
+.oneui-header-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 30px;
+  border: 1px solid color-mix(in srgb, var(--oneui-text-primary) 10%, transparent);
+  background: color-mix(in srgb, var(--oneui-surface) 92%, var(--oneui-focus) 8%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  padding: 10px;
+}
+
+.oneui-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.oneui-brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.oneui-brand {
+  border-radius: 20px;
+  padding: 10px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--oneui-text-primary);
+  transition: var(--oneui-transition);
+}
+
+.oneui-brand:hover {
+  background: color-mix(in srgb, var(--oneui-focus) 75%, transparent);
+}
+
+.oneui-brand-active {
+  background: color-mix(in srgb, var(--oneui-primary) 14%, transparent);
+}
+
+.oneui-brand-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--oneui-primary);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--oneui-primary) 18%, transparent);
+}
+
+.oneui-brand-text {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.oneui-nav-segment {
+  align-items: center;
+  gap: 2px;
+  border-radius: 16px;
+  padding: 4px;
+  background: color-mix(in srgb, var(--oneui-focus) 76%, transparent);
+}
+
+.oneui-nav-tab {
+  border-radius: 12px;
+  padding: 9px 14px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--oneui-text-secondary);
+  transition: var(--oneui-transition);
+}
+
+.oneui-nav-tab:hover {
+  color: var(--oneui-text-primary);
+  background: color-mix(in srgb, var(--oneui-surface) 80%, transparent);
+}
+
+.oneui-nav-tab-active {
+  background: var(--oneui-surface);
+  color: var(--oneui-primary);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.oneui-utility-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.oneui-menu-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb, var(--oneui-text-primary) 10%, transparent);
+  background: color-mix(in srgb, var(--oneui-surface) 88%, var(--oneui-focus) 12%);
+  color: var(--oneui-text-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--oneui-transition);
+}
+
+.oneui-menu-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.oneui-mobile-panel {
+  margin-top: 10px;
+  border-top: 1px solid color-mix(in srgb, var(--oneui-text-primary) 10%, transparent);
+  padding-top: 10px;
+}
+
+.oneui-mobile-list {
+  display: grid;
+  gap: 6px;
+}
+
+.oneui-mobile-link {
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 600;
+  color: var(--oneui-text-secondary);
+  transition: var(--oneui-transition);
+}
+
+.oneui-mobile-link:hover {
+  color: var(--oneui-text-primary);
+  background: color-mix(in srgb, var(--oneui-focus) 80%, transparent);
+}
+
+.oneui-mobile-link-active {
+  color: var(--oneui-primary);
+  background: color-mix(in srgb, var(--oneui-primary) 14%, transparent);
+}
+
+.oneui-control-btn {
+  min-height: 48px;
+  border: 1px solid color-mix(in srgb, var(--oneui-text-primary) 10%, transparent);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--oneui-surface) 88%, var(--oneui-focus) 12%);
+  color: var(--oneui-text-primary);
+  padding: 8px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--oneui-transition);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.oneui-control-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.oneui-control-btn:active {
+  transform: scale(0.98);
+}
+
+.oneui-control-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--oneui-primary) 14%, transparent);
+  color: var(--oneui-primary);
+}
+
+.oneui-control-label {
+  font-size: 0.8rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  color: var(--oneui-text-secondary);
+}
+
+.oneui-chip-group {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--oneui-focus) 80%, transparent);
+  gap: 2px;
+}
+
+.oneui-chip {
+  min-width: 40px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 9px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--oneui-text-secondary);
+}
+
+.oneui-chip.is-active {
+  background: color-mix(in srgb, var(--oneui-primary) 88%, white 12%);
+  color: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .oneui-header-shell {
+    border-radius: 24px;
+    padding: 8px;
+  }
+
+  .oneui-brand {
+    padding: 10px 12px;
+  }
+
+  .oneui-control-btn {
+    min-height: 46px;
+    padding: 8px;
+  }
+
+  .oneui-chip-group {
+    display: none;
+  }
 }
 
 /* Smooth Scrolling */

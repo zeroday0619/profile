@@ -1,5 +1,16 @@
 import type { Config } from "tailwindcss";
 
+type TailwindConfigWithDaisyUi = Config & {
+  daisyui?: {
+    themes?: Array<Record<string, Record<string, string>>>;
+    base?: boolean;
+    styled?: boolean;
+    utils?: boolean;
+    logs?: boolean;
+    themeRoot?: string;
+  };
+};
+
 export default {
   darkMode: "class",
   content: [
@@ -128,4 +139,4 @@ export default {
     logs: true,
     themeRoot: ":root"
   }
-} satisfies Config;
+} satisfies TailwindConfigWithDaisyUi;
