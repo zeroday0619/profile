@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -27,6 +28,16 @@ const NotOtakuPage = () => {
           <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-primary to-primary-focus bg-clip-text text-transparent">
             {pageTitle}
           </h1>
+          <div className="mt-8 flex justify-center">
+            <Image
+              src="/images/otaku.png"
+              alt={t("오타쿠 이미지", "Otaku image")}
+              width={320}
+              height={320}
+              className="h-auto w-full max-w-xs md:max-w-sm"
+              priority
+            />
+          </div>
         </div>
       </div>
     </>
