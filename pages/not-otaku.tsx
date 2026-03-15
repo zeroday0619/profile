@@ -13,6 +13,7 @@ const NotOtakuPage = () => {
         title={pageTitle}
         description={hiddenLabel}
         canonical="/not-otaku"
+        image="/images/otaku.png"
         noindex
         nofollow
         lang={language}
