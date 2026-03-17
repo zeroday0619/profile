@@ -50,7 +50,6 @@ const Header = () => {
                   className="oneui-brand"
                   href="/"
                 >
-                  <span className="oneui-brand-dot" aria-hidden="true" />
                   <span className="oneui-brand-text">zeroday0619</span>
                 </ActiveLink>
 
