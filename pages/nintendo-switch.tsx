@@ -40,6 +40,10 @@ export default function NintendoSwitchPage() {
     <>
       <SEO
         title={t("닌텐도 스위치 친구코드", "Nintendo Switch Friend Code")}
+        description={t(
+          "저랑 닌텐도 스위치 친구할래요?",
+          "Would you like to be friends on Nintendo Switch?"
+        )}
         canonical="/nintendo-switch"
         image="/images/image_friend_request_4.0.0.png"
         imageAlt={t("닌텐도 스위치 친구 요청 화면", "Nintendo Switch friend request screen")}
