@@ -17,7 +17,7 @@ type SEOProps = {
 const SITE_URL = "https://zeroday0619.dev";
 const SITE_NAME = "zeroday0619";
 const DEFAULT_DESCRIPTION =
-  "Python Software Engineer Euiseo Cha (zeroday0619). Open-source contributor and Ubuntu Member.";
+  "Python Software Engineer zeroday0619. Open-source contributor and Ubuntu Member.";
 
 const toAbsoluteUrl = (urlOrPath: string) => {
   if (/^https?:\/\//i.test(urlOrPath)) return urlOrPath;
@@ -81,7 +81,7 @@ export default function SEO({
       <meta key="twitter:description" name="twitter:description" content={description} />
       <meta key="twitter:image" name="twitter:image" content={ogImage} />
 
-      <meta key="author" name="author" content="Euiseo Cha" />
+      <meta key="author" name="author" content="zeroday0619" />
       <meta key="format-detection" name="format-detection" content="telephone=no" />
     </Head>
   );

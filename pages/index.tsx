@@ -201,10 +201,10 @@ const Home = () => {
   const { language, t } = useLanguage();
   const paragraphs = INTRO_PARAGRAPHS[language];
 
-  const seoTitle = t("차의서", "Euiseo Cha");
+  const seoTitle = t("zeroday0619", "zeroday0619");
   const seoDescription = t(
-    "Python 소프트웨어 엔지니어 차의서 (zeroday0619).",
-    "Python software engineer Euiseo Cha (zeroday0619)."
+    "Python 소프트웨어 엔지니어 zeroday0619.",
+    "Python software engineer zeroday0619."
   );
 
   return (
@@ -215,7 +215,7 @@ const Home = () => {
         canonical="/"
         lang={language}
         image="/images/profile.jpg"
-        imageAlt="Euiseo Cha profile photo"
+        imageAlt="zeroday0619 profile photo"
       />
     <div className="min-h-screen bg-base-200">
       {/* Hero Section - OneUI Style with viewing area at top */}
@@ -229,7 +229,7 @@ const Home = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full blur-2xl" />
                 <Image
                   src="/images/profile.jpg"
-                  alt="Euiseo Cha profile photo"
+                  alt="zeroday0619 profile photo"
                   width={280}
                   height={280}
                   className="relative rounded-full shadow-oneui-lg ring-4 ring-base-200"
@@ -240,7 +240,7 @@ const Home = () => {
               {/* Profile Info */}
               <div className="flex-1 text-center lg:text-left">
                 <h1 className="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-primary to-primary-focus bg-clip-text text-transparent">
-                  {t("차의서", "Euiseo Cha")}
+                  {t("zeroday0619", "zeroday0619")}
                 </h1>
                 <p className="text-lg text-base-content/60 mb-6 font-medium">
                   Python Software Engineer
