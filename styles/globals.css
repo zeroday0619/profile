@@ -104,13 +104,14 @@ body, html, #__next {
 .oneui-header-shell {
   max-width: 1200px;
   margin: 0 auto;
-  border-radius: 30px;
-  border: 1px solid color-mix(in srgb, var(--oneui-text-primary) 10%, transparent);
-  background: color-mix(in srgb, var(--oneui-surface) 92%, var(--oneui-focus) 8%);
+  border-radius: 0;
+  border: none;
+  border-bottom: none;
+  background: transparent;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-  padding: 10px;
+  box-shadow: none;
+  padding: 6px 4px;
 }
 
 .oneui-header-inner {
@@ -128,7 +129,10 @@ body, html, #__next {
 }
 
 .oneui-brand {
-  border-radius: 20px;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--oneui-text-primary) 8%, transparent);
+  background: color-mix(in srgb, var(--oneui-surface) 94%, transparent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   padding: 10px 14px;
   display: inline-flex;
   align-items: center;
@@ -138,11 +142,11 @@ body, html, #__next {
 }
 
 .oneui-brand:hover {
-  background: color-mix(in srgb, var(--oneui-focus) 75%, transparent);
+  background: color-mix(in srgb, var(--oneui-surface) 88%, var(--oneui-focus) 12%);
 }
 
 .oneui-brand-active {
-  background: color-mix(in srgb, var(--oneui-primary) 14%, transparent);
+  color: var(--oneui-primary);
 }
 
 .oneui-brand-dot {
@@ -162,14 +166,17 @@ body, html, #__next {
 
 .oneui-nav-segment {
   align-items: center;
-  gap: 2px;
-  border-radius: 16px;
-  padding: 4px;
-  background: color-mix(in srgb, var(--oneui-focus) 76%, transparent);
+  gap: 8px;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
 }
 
 .oneui-nav-tab {
-  border-radius: 12px;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--oneui-text-primary) 8%, transparent);
+  background: color-mix(in srgb, var(--oneui-surface) 94%, transparent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   padding: 9px 14px;
   font-size: 0.92rem;
   font-weight: 600;
@@ -179,13 +186,13 @@ body, html, #__next {
 
 .oneui-nav-tab:hover {
   color: var(--oneui-text-primary);
-  background: color-mix(in srgb, var(--oneui-surface) 80%, transparent);
+  background: color-mix(in srgb, var(--oneui-surface) 88%, var(--oneui-focus) 12%);
 }
 
 .oneui-nav-tab-active {
-  background: var(--oneui-surface);
+  background: color-mix(in srgb, var(--oneui-surface) 88%, var(--oneui-focus) 12%);
   color: var(--oneui-primary);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  box-shadow: none;
 }
 
 .oneui-utility-wrap {
@@ -197,9 +204,10 @@ body, html, #__next {
 .oneui-menu-btn {
   width: 48px;
   height: 48px;
-  border-radius: 16px;
-  border: 1px solid color-mix(in srgb, var(--oneui-text-primary) 10%, transparent);
-  background: color-mix(in srgb, var(--oneui-surface) 88%, var(--oneui-focus) 12%);
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--oneui-text-primary) 8%, transparent);
+  background: color-mix(in srgb, var(--oneui-surface) 94%, transparent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   color: var(--oneui-text-primary);
   display: inline-flex;
   align-items: center;
@@ -208,8 +216,9 @@ body, html, #__next {
 }
 
 .oneui-menu-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  transform: none;
+  box-shadow: none;
+  background: color-mix(in srgb, var(--oneui-surface) 88%, var(--oneui-focus) 12%);
 }
 
 .oneui-mobile-panel {
@@ -242,22 +251,23 @@ body, html, #__next {
 }
 
 .oneui-control-btn {
-  min-height: 48px;
-  border: 1px solid color-mix(in srgb, var(--oneui-text-primary) 10%, transparent);
-  border-radius: 16px;
-  background: color-mix(in srgb, var(--oneui-surface) 88%, var(--oneui-focus) 12%);
+  min-height: 46px;
+  border: 1px solid color-mix(in srgb, var(--oneui-text-primary) 8%, transparent);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--oneui-surface) 94%, transparent);
   color: var(--oneui-text-primary);
-  padding: 8px 10px;
+  padding: 8px 12px;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   transition: var(--oneui-transition);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .oneui-control-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  transform: none;
+  box-shadow: none;
+  background: color-mix(in srgb, var(--oneui-surface) 88%, var(--oneui-focus) 12%);
 }
 
 .oneui-control-btn:active {
@@ -265,14 +275,14 @@ body, html, #__next {
 }
 
 .oneui-control-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: color-mix(in srgb, var(--oneui-primary) 14%, transparent);
-  color: var(--oneui-primary);
+  background: transparent;
+  color: var(--oneui-text-secondary);
 }
 
 .oneui-control-label {
@@ -284,11 +294,11 @@ body, html, #__next {
 }
 
 .oneui-chip-group {
-  display: inline-flex;
+  display: none;
   align-items: center;
-  padding: 2px;
-  border-radius: 12px;
-  background: color-mix(in srgb, var(--oneui-focus) 80%, transparent);
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
   gap: 2px;
 }
 
@@ -302,18 +312,24 @@ body, html, #__next {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--oneui-text-secondary);
+  color: color-mix(in srgb, var(--oneui-text-secondary) 85%, transparent);
 }
 
 .oneui-chip.is-active {
-  background: color-mix(in srgb, var(--oneui-primary) 88%, white 12%);
-  color: #ffffff;
+  background: color-mix(in srgb, var(--oneui-primary) 16%, transparent);
+  color: var(--oneui-primary);
+}
+
+.oneui-mobile-link {
+  border: 1px solid color-mix(in srgb, var(--oneui-text-primary) 8%, transparent);
+  background: color-mix(in srgb, var(--oneui-surface) 94%, transparent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 @media (max-width: 640px) {
   .oneui-header-shell {
-    border-radius: 24px;
-    padding: 8px;
+    border-radius: 0;
+    padding: 8px 2px;
   }
 
   .oneui-brand {
