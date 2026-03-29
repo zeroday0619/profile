@@ -61,14 +61,6 @@ const Header = () => {
                   >
                     <span>{t("외주", "Outsourcing")}</span>
                   </ActiveLink>
-                  <a
-                    href="https://cv.zeroday0619.dev/"
-                    className="oneui-nav-tab"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span>CV</span>
-                  </a>
                 </div>
               </div>
 
