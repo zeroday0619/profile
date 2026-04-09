@@ -269,6 +269,21 @@ const Home = () => {
                     <NintendoSwitchIcon />
                     <span>{t("닌텐도 스위치", "Nintendo Switch")}</span>
                   </Link>
+                  <Link
+                    href="/pokemon-champions"
+                    className="flex items-center gap-2 px-5 py-3 rounded-oneui-sm bg-base-200 hover:bg-primary hover:text-white transition-all duration-300 font-medium"
+                    aria-label={t("Pokémon Champions 트레이너 친구 추가", "Pokémon Champions Trainer Friend Add")}
+                  >
+                    <img
+                      src="https://champions.pokemon.com/favicons/favicon.svg"
+                      alt=""
+                      width="20"
+                      height="20"
+                      className="shrink-0"
+                      aria-hidden="true"
+                    />
+                    <span>{t("Pokémon™ Champions", "Pokémon Champions")}</span>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -44,6 +44,15 @@ const Footer = () => {
           <p className="text-sm text-base-content/60">
             Copyright © {currentYear} zeroday0619. All rights reserved.
           </p>
+          <div className="mt-3 space-y-2 text-xs text-base-content/55">
+            <p>©Pokémon/Nintendo/Creatures/GAME FREAK</p>
+            <p>
+              {t(
+                "포켓몬스터, 포켓몬, Pokémon, Nintendo Switch는 Nintendo의 상표입니다.",
+                "Pokémon and Nintendo Switch are trademarks of Nintendo."
+              )}
+            </p>
+          </div>
         </div>
       </div>
     </footer>
