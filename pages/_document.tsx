@@ -1,7 +1,7 @@
 import { Html, Main, Head, NextScript } from "next/document";
 
 const Document = () => (
-  <Html lang="ko" data-theme="oneui">
+  <Html lang="ko" data-theme="light">
     <Head>
       <meta name="color-scheme" content="light dark" />
       <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
