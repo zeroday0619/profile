@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { PHASE_DEVELOPMENT_SERVER } from "next/constants";
 
 const nextConfig: NextConfig = {
   images: {
@@ -14,7 +15,16 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
 };
 
-export default nextConfig;
+const config = async (phase: string): Promise<NextConfig> => {
+  if (phase === PHASE_DEVELOPMENT_SERVER) {
+    const { initOpenNextCloudflareForDev } = await import(
+      "@opennextjs/cloudflare"
+    );
 
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
-initOpenNextCloudflareForDev();
+    await initOpenNextCloudflareForDev();
+  }
+
+  return nextConfig;
+};
+
+export default config;
