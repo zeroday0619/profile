@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from "@headlessui/react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import SEO from "@/components/SEO";
 
 const FRIEND_CODE = "SW-3208-1563-3130";
 const NINTENDO_FRIEND_LINK = "https://lounge.nintendo.com/friendcode/3208-1563-3130/DG59j7tZRk";
+type CopyStatus = "idle" | "copied" | "error";
 
-const NintendoSwitchIcon = ({ width = "16", height = "16" }: { width?: string; height?: string }) => (
+const NintendoSwitchIcon = ({ width = "20", height = "20" }: { width?: string; height?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}
@@ -23,16 +25,25 @@ const NintendoSwitchIcon = ({ width = "16", height = "16" }: { width?: string; h
 
 export default function NintendoSwitchPage() {
   const { language, t } = useLanguage();
-  const [copied, setCopied] = useState(false);
+  const [copyStatus, setCopyStatus] = useState<CopyStatus>("idle");
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
+  const copyResetTimeout = useRef<number | undefined>(undefined);
+
+  useEffect(() => () => window.clearTimeout(copyResetTimeout.current), []);
+
+  const resetCopyStatusLater = () => {
+    window.clearTimeout(copyResetTimeout.current);
+    copyResetTimeout.current = window.setTimeout(() => setCopyStatus("idle"), 1800);
+  };
 
   const copyFriendCode = async () => {
     try {
       await navigator.clipboard.writeText(FRIEND_CODE);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1800);
+      setCopyStatus("copied");
+      resetCopyStatusLater();
     } catch {
-      setCopied(false);
+      setCopyStatus("error");
+      resetCopyStatusLater();
     }
   };
 
@@ -40,10 +51,7 @@ export default function NintendoSwitchPage() {
     <>
       <SEO
         title={t("닌텐도 스위치 친구코드", "Nintendo Switch Friend Code")}
-        description={t(
-          "저랑 닌텐도 스위치 친구할래요?",
-          "Would you like to be friends on Nintendo Switch?"
-        )}
+        description={t("저랑 닌텐도 스위치 친구할래요?", "Would you like to be friends on Nintendo Switch?")}
         canonical="/nintendo-switch"
         image="/images/image_friend_request_4.0.0.png"
         imageAlt={t("닌텐도 스위치 친구 요청 화면", "Nintendo Switch friend request screen")}
@@ -52,130 +60,113 @@ export default function NintendoSwitchPage() {
         nofollow
       />
 
-      <div className="min-h-screen bg-base-200 py-12 px-6">
-        <div className="max-w-3xl mx-auto">
-          <div className="oneui-card p-8 md:p-10 oneui-animate-fade-in">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/15 text-primary">
-                <NintendoSwitchIcon width="20" height="20" />
-              </span>
-              <h1 className="text-3xl font-bold">
-                {t("닌텐도 스위치 친구코드", "Nintendo Switch Friend Code")}
-              </h1>
-            </div>
-
-            <p className="text-base-content/70 mb-6">
-              {t(
-                "친구 추가를 원하시면 아래 코드를 사용해 주세요.",
-                "Use the code below if you want to add me as a friend."
-              )}
-            </p>
-
-            <div className="flex flex-col gap-4">
-              <div className="w-full rounded-oneui-sm bg-base-100 p-6 md:p-8 border border-base-300">
-                <p className="text-sm text-base-content/60 mb-2">Friend Code</p>
-                <button
-                  type="button"
-                  onClick={copyFriendCode}
-                  aria-label={t("친구코드 복사", "Copy friend code")}
-                  className="w-full rounded-oneui-sm px-3 py-2 hover:bg-base-200 transition-colors duration-200 cursor-pointer"
-                >
-                  <span className="block text-[clamp(1rem,5.2vw,2.25rem)] font-black text-primary whitespace-nowrap leading-tight text-center">
-                    {FRIEND_CODE}
-                  </span>
-                </button>
-                <p className="text-xs text-base-content/60 mt-2 text-center">
-                  {copied
-                    ? t("복사되었습니다.", "Copied.")
-                    : t("코드를 클릭하면 복사됩니다.", "Click the code to copy.")}
-                </p>
-              </div>
-
-              <div className="w-full rounded-oneui-sm bg-base-100 p-5 border border-base-300">
-                <p className="text-sm text-base-content/60 mb-3">
-                  {t("모바일에서 친구 추가 링크 열기", "Open friend-add link on mobile")}
-                </p>
-                <a
-                  href={NINTENDO_FRIEND_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-oneui-sm bg-primary text-white hover:opacity-90 transition-all duration-300 font-semibold"
-                >
-                  <NintendoSwitchIcon />
-                  <span>{t("친구 추가 링크 열기", "Open friend-add link")}</span>
-                </a>
-                <p className="text-xs text-base-content/60 mt-3 text-center">
-                  {t(
-                    "모바일에서 열면 Nintendo Switch 앱으로 바로 이동할 수 있습니다.",
-                    "Open this on mobile to jump directly into the Nintendo Switch app."
-                  )}
-                </p>
-              </div>
-
-              <div className="w-full rounded-oneui-sm bg-base-100 p-4 border border-base-300 flex flex-col items-center justify-center">
-                <p className="text-sm text-base-content/60 mb-3">QR Code</p>
-                <button
-                  type="button"
-                  onClick={() => setIsQrModalOpen(true)}
-                  aria-label={t("QR 확대 보기", "Open QR image")}
-                  className="rounded-oneui-sm transition-transform duration-200 hover:scale-[1.02]"
-                >
-                  <Image
-                    src="/images/nintendo-switch-friend-code-qr.jpg"
-                    alt={t("닌텐도 스위치 친구코드 QR", "Nintendo Switch friend code QR")}
-                    width={220}
-                    height={220}
-                    className="rounded-oneui-sm border border-base-300"
-                    priority
-                  />
-                </button>
-                <p className="text-xs text-base-content/60 mt-2 text-center">
-                  {t("이미지를 누르면 확대됩니다.", "Tap image to zoom.")}
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-oneui-sm bg-base-100 hover:bg-base-300 transition-all duration-300 font-semibold"
-              >
-                {t("메인으로", "Back to Home")}
-              </Link>
-            </div>
+      <div className="page-shell">
+        <section className="interior-hero" aria-labelledby="nintendo-title">
+          <div className="site-container">
+            <Link className="breadcrumb" href="/">
+              <span aria-hidden="true">←</span> {t("홈", "Home")}
+            </Link>
+            <p className="page-kicker">Nintendo Switch</p>
+            <h1 id="nintendo-title">{t("친구코드로 연결하기", "Connect with a friend code")}</h1>
+            <p>{t("코드를 복사하거나, 모바일 링크와 QR 코드를 사용해 주세요.", "Copy the code, or use the mobile link and QR code.")}</p>
           </div>
-        </div>
+        </section>
+
+        <section className="section" aria-label={t("친구 추가 정보", "Friend add details")}>
+          <div className="site-container utility-grid">
+            <article className="utility-card code-card">
+              <span className="card-corner" aria-hidden="true" />
+              <div className="utility-card-heading">
+                <span className="utility-icon"><NintendoSwitchIcon /></span>
+                <div>
+                  <p className="card-label">Nintendo account</p>
+                  <h2>{t("친구코드", "Friend code")}</h2>
+                </div>
+              </div>
+              <p>{t("아래 코드를 누르면 클립보드에 복사됩니다.", "Select the code to copy it to your clipboard.")}</p>
+              <button
+                type="button"
+                onClick={copyFriendCode}
+                className="copy-code-button"
+                aria-label={t("친구코드 복사", "Copy friend code")}
+                aria-describedby="friend-code-status"
+              >
+                {FRIEND_CODE}
+              </button>
+              <p id="friend-code-status" className="status-text" role="status" aria-live="polite">
+                {copyStatus === "copied"
+                  ? t("복사되었습니다.", "Copied.")
+                  : copyStatus === "error"
+                    ? t("복사하지 못했습니다. 코드를 직접 선택해 주세요.", "Could not copy. Select the code manually.")
+                    : t("코드를 눌러 복사하세요.", "Select the code to copy.")}
+              </p>
+              <a
+                href={NINTENDO_FRIEND_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button button-primary"
+              >
+                <NintendoSwitchIcon width="16" height="16" />
+                {t("모바일에서 친구 추가", "Add friend on mobile")} <span aria-hidden="true">↗</span>
+              </a>
+            </article>
+
+            <article className="utility-card qr-card">
+              <span className="card-corner" aria-hidden="true" />
+              <p className="card-label">QR resource</p>
+              <h2>{t("QR 코드", "QR code")}</h2>
+              <p>{t("이미지를 누르면 스캔하기 좋은 크기로 확대됩니다.", "Select the image to open a larger version for scanning.")}</p>
+              <button
+                type="button"
+                onClick={() => setIsQrModalOpen(true)}
+                className="qr-button"
+                aria-label={t("QR 코드 확대 보기", "Open enlarged QR code")}
+              >
+                <Image
+                  src="/images/nintendo-switch-friend-code-qr.jpg"
+                  alt={t("닌텐도 스위치 친구코드 QR", "Nintendo Switch friend code QR")}
+                  width={320}
+                  height={320}
+                  loading="eager"
+                />
+              </button>
+            </article>
+          </div>
+
+          <div className="site-container back-row">
+            <Link className="button button-outline" href="/">
+              <span aria-hidden="true">←</span> {t("메인으로", "Back to Home")}
+            </Link>
+          </div>
+        </section>
       </div>
 
-      {isQrModalOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-black/70 p-4 flex items-center justify-center"
-          role="dialog"
-          aria-modal="true"
-          aria-label={t("QR 코드 확대", "QR image zoom")}
-          onClick={() => setIsQrModalOpen(false)}
-        >
-          <div
-            className="relative w-full max-w-md"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              onClick={() => setIsQrModalOpen(false)}
-              className="absolute -top-12 right-0 px-3 py-2 rounded-oneui-sm bg-white/90 text-black text-sm font-semibold"
-            >
-              {t("닫기", "Close")}
-            </button>
+      <Dialog open={isQrModalOpen} onClose={setIsQrModalOpen} className="modal-root">
+        <DialogBackdrop className="modal-backdrop" />
+        <div className="modal-positioner">
+          <DialogPanel className="modal-panel">
+            <div className="modal-heading">
+              <DialogTitle>{t("닌텐도 스위치 친구코드 QR", "Nintendo Switch friend code QR")}</DialogTitle>
+              <button
+                type="button"
+                onClick={() => setIsQrModalOpen(false)}
+                className="modal-close"
+                autoFocus
+              >
+                {t("닫기", "Close")}
+              </button>
+            </div>
             <Image
               src="/images/nintendo-switch-friend-code-qr.jpg"
               alt={t("닌텐도 스위치 친구코드 QR", "Nintendo Switch friend code QR")}
               width={800}
               height={800}
-              className="w-full h-auto rounded-oneui-sm border border-white/30"
+              className="modal-image"
+              loading="eager"
             />
-          </div>
+          </DialogPanel>
         </div>
-      )}
+      </Dialog>
     </>
   );
 }

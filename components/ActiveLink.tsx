@@ -2,7 +2,7 @@
 
 import Link, { type LinkProps } from "next/link";
 import { useRouter } from "next/router";
-import { type PropsWithChildren, useMemo } from "react";
+import { type PropsWithChildren } from "react";
 
 type ActiveLinkProps = LinkProps & {
   activeClassName: string;
@@ -15,28 +15,14 @@ const ActiveLink = ({
   className = "",
   ...props
 }: PropsWithChildren<ActiveLinkProps>) => {
-  const { asPath, isReady } = useRouter();
-
-  const computedClassName = useMemo(() => {
-    if (!isReady) return className;
-
-    const linkPathname = new URL(
-      (props.as || props.href) as string,
-      typeof window !== "undefined" ? window.location.href : "http://localhost"
-    ).pathname;
-
-    const activePathname = new URL(
-      asPath,
-      typeof window !== "undefined" ? window.location.href : "http://localhost"
-    ).pathname;
-
-    return linkPathname === activePathname
-      ? `${className} ${activeClassName}`.trim()
-      : className;
-  }, [asPath, isReady, props.as, props.href, activeClassName, className]);
+  const { pathname } = useRouter();
+  const target = props.as || props.href;
+  const targetPathname = typeof target === "string" ? target.split(/[?#]/)[0] : target.pathname;
+  const isActive = targetPathname === pathname;
+  const computedClassName = isActive ? `${className} ${activeClassName}`.trim() : className;
 
   return (
-    <Link className={computedClassName} {...props}>
+    <Link className={computedClassName} aria-current={isActive ? "page" : undefined} {...props}>
       {children}
     </Link>
   );

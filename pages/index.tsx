@@ -28,7 +28,8 @@ const INTRO_PARAGRAPHS = {
     "오픈소스에 열정을 가진 Ubuntu Member로서 Ubuntu 커뮤니티에 적극적으로 기여하고 있으며, Ubuntu Korea LoCo 포럼의 운영진으로 활동하며 커뮤니티 내 협업과 지식 공유를 지원하고, GitHub 및 다양한 협업 플랫폼을 통해 오픈소스 프로젝트에 코드 기여를 하면서 특히 가속 컴퓨팅을 포함한 컴퓨터 과학 분야에 깊은 관심을 가지고 있습니다.",
   ],
   en: [
-    "As an open-source enthusiast and Ubuntu Member, I actively contribute to the Ubuntu community, serve as a moderator for the Ubuntu Korea LoCo forum to support collaboration and knowledge sharing, and contribute code to open-source projects via GitHub and other platforms with a strong interest in computer science, particularly accelerated computing.",
+    "As an open-source enthusiast and Ubuntu Member, I actively contribute to the Ubuntu community. I also support collaboration and knowledge sharing as a moderator for the Ubuntu Korea LoCo forum.",
+    "I contribute code through GitHub and other collaborative platforms, with a strong interest in computer science and accelerated computing.",
   ],
 } as const;
 
@@ -38,38 +39,16 @@ const CONTACT_LINKS = [
   { href: "mailto:euiseo.cha@gmail.com", logo: "mail", label: "Email" },
 ] as const;
 
-const NintendoSwitchIcon = ({ width = "20", height = "20" }: { width?: string; height?: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={width}
-    height={height}
-    fill="currentColor"
-    viewBox="0 0 16 16"
-    aria-hidden="true"
-  >
-    <path d="M9.34 8.005c0-4.38.01-7.972.023-7.982C9.373.01 10.036 0 10.831 0c1.153 0 1.51.01 1.743.05 1.73.298 3.045 1.6 3.373 3.326.046.242.053.809.053 4.61 0 4.06.005 4.537-.123 4.976-.022.076-.048.15-.08.242a4.14 4.14 0 0 1-3.426 2.767c-.317.033-2.889.046-2.978.013-.05-.02-.053-.752-.053-7.979m4.675.269a1.62 1.62 0 0 0-1.113-1.034 1.61 1.61 0 0 0-1.938 1.073 1.9 1.9 0 0 0-.014.935 1.63 1.63 0 0 0 1.952 1.107c.51-.136.908-.504 1.11-1.028.11-.285.113-.742.003-1.053M3.71 3.317c-.208.04-.526.199-.695.348-.348.301-.52.729-.494 1.232.013.262.03.332.136.544.155.321.39.556.712.715.222.11.278.123.567.133.261.01.354 0 .53-.06.719-.242 1.153-.94 1.03-1.656-.142-.852-.95-1.422-1.786-1.256" />
-    <path d="M3.425.053a4.14 4.14 0 0 0-3.28 3.015C0 3.628-.01 3.956.005 8.3c.01 3.99.014 4.082.08 4.39.368 1.66 1.548 2.844 3.224 3.235.22.05.497.06 2.29.07 1.856.012 2.048.009 2.097-.04.05-.05.053-.69.053-7.94 0-5.374-.01-7.906-.033-7.952-.033-.06-.09-.063-2.03-.06-1.578.004-2.052.014-2.26.05Zm3 14.665-1.35-.016c-1.242-.013-1.375-.02-1.623-.083a2.81 2.81 0 0 1-2.08-2.167c-.074-.335-.074-8.579-.004-8.907a2.85 2.85 0 0 1 1.716-2.05c.438-.176.64-.196 2.058-.2l1.282-.003v13.426Z" />
-  </svg>
-);
-
 const PROJECTS: readonly Project[] = [
   {
     name: "luksctl",
     description: {
-      ko: "LUKS 암호화 볼륨을 쉽게 마운트/언마운트할 수 있는 Rust 기반 CLI 도구입니다.",
-      en: "Rust-based CLI tool for easily mounting and unmounting LUKS encrypted volumes.",
+      ko: "LUKS 암호화 볼륨을 쉽게 마운트하고 언마운트하는 Rust 기반 CLI 도구입니다.",
+      en: "A Rust-based CLI tool for easily mounting and unmounting LUKS encrypted volumes.",
     },
     features: {
-      ko: [
-        "UUID 기반 mapper 이름 자동 생성",
-        "마운트 포인트 자동 생성",
-        "다국어 지원",
-      ],
-      en: [
-        "UUID-based mapper name auto-generation",
-        "Auto-create mount points",
-        "Multi-language support",
-      ],
+      ko: ["UUID 기반 mapper 이름 자동 생성", "마운트 포인트 자동 생성", "다국어 지원"],
+      en: ["UUID-based mapper names", "Automatic mount points", "Multi-language support"],
     },
     links: {
       github: "https://github.com/zeroday0619/luksctl",
@@ -84,20 +63,12 @@ const PROJECTS: readonly Project[] = [
     },
     private: true,
     description: {
-      ko: "엄격한 타입 힌트와 높은 타입 커버리지를 갖춘 Python 기반 Discord 텍스트-투-스피치 봇입니다.",
-      en: "Python-based Discord text-to-speech bot with strict type hints and comprehensive type coverage.",
+      ko: "엄격한 타입 힌트와 높은 타입 커버리지를 갖춘 Python 기반 Discord 텍스트 음성 변환 봇입니다.",
+      en: "A Python Discord text-to-speech bot with strict type hints and comprehensive type coverage.",
     },
     features: {
-      ko: [
-        "uv를 통한 의존성 관리",
-        "ruff로 포매팅/린팅",
-        "TDD 기반으로 견고하게 설계",
-      ],
-      en: [
-        "Dependency management via uv",
-        "Code formatting and linting with ruff",
-        "Implemented test-driven development (TDD) approach",
-      ],
+      ko: ["uv 의존성 관리", "ruff 포매팅과 린팅", "테스트 주도 개발"],
+      en: ["Dependency management with uv", "Formatting and linting with ruff", "Test-driven development"],
     },
     links: {
       github: "https://github.com/discord-koe/koe-next",
@@ -111,22 +82,12 @@ const PROJECTS: readonly Project[] = [
     },
     private: true,
     description: {
-      ko: "Discord 마크다운 문법을 파싱하여 AST(Abstract Syntax Tree) 표현으로 변환합니다.",
-      en: "Parses Discord markdown syntax and converts it to an Abstract Syntax Tree (AST) representation.",
+      ko: "Discord 마크다운 문법을 파싱해 추상 구문 트리 표현으로 변환합니다.",
+      en: "A parser that converts Discord markdown syntax into an Abstract Syntax Tree representation.",
     },
     features: {
-      ko: [
-        "엄격한 타입 힌트",
-        "uv를 통한 의존성 관리",
-        "ruff로 포매팅/린팅",
-        "TDD 기반 개발",
-      ],
-      en: [
-        "Strict type hints",
-        "Dependency management via uv",
-        "Formatting and linting with ruff",
-        "TDD approach",
-      ],
+      ko: ["엄격한 타입 힌트", "uv 의존성 관리", "ruff 포매팅과 린팅", "테스트 주도 개발"],
+      en: ["Strict type hints", "Dependency management with uv", "Formatting and linting with ruff", "Test-driven development"],
     },
     links: {
       github: "https://github.com/discord-koe/discordown",
@@ -136,63 +97,27 @@ const PROJECTS: readonly Project[] = [
 
 const SKILL_CATEGORIES: readonly SkillCategory[] = [
   {
-    title: {
-      ko: "언어",
-      en: "Languages",
-    },
+    title: { ko: "언어", en: "Languages" },
     items: [
-      {
-        ko: "Python: 다년간의 프로젝트 경험",
-        en: "Python: many years of experience.",
-      },
-      {
-        ko: "Rust: 최근 가장 자주 사용하는 언어",
-        en: "Rust: frequently used nowadays.",
-      },
-      {
-        ko: "C/C++: 필요 시 충분히 다룰 수 있음",
-        en: "C/C++: yes, I can handle this too.",
-      },
-      {
-        ko: "Go: 필요 시 충분히 다룰 수 있음",
-        en: "Go: yes, I can handle this too.",
-      },
+      { ko: "Python · 다년간의 프로젝트 경험", en: "Python · Years of project experience" },
+      { ko: "Rust · 최근 가장 자주 사용하는 언어", en: "Rust · Frequently used today" },
+      { ko: "C/C++ · 시스템 수준 개발", en: "C/C++ · Systems-level development" },
+      { ko: "Go · 서비스와 도구 개발", en: "Go · Services and tooling" },
     ],
   },
   {
-    title: {
-      ko: "인프라",
-      en: "Infrastructure",
-    },
+    title: { ko: "인프라", en: "Infrastructure" },
     items: [
-      {
-        ko: "Linux (Ubuntu, RHEL)",
-        en: "Linux (Ubuntu, RHEL)",
-      },
-      {
-        ko: "Docker",
-        en: "Docker",
-      },
-      {
-        ko: "LXD/LXC",
-        en: "LXD/LXC",
-      },
+      { ko: "Linux · Ubuntu와 RHEL", en: "Linux · Ubuntu and RHEL" },
+      { ko: "Docker · 컨테이너 환경", en: "Docker · Container environments" },
+      { ko: "LXD/LXC · 시스템 컨테이너", en: "LXD/LXC · System containers" },
     ],
   },
   {
-    title: {
-      ko: "개발 방식",
-      en: "Practices",
-    },
+    title: { ko: "개발 방식", en: "Practices" },
     items: [
-      {
-        ko: "CI/CD (GitHub Actions)",
-        en: "CI/CD (GitHub Action)",
-      },
-      {
-        ko: "Security",
-        en: "Security",
-      },
+      { ko: "GitHub Actions 기반 CI/CD", en: "CI/CD with GitHub Actions" },
+      { ko: "보안을 고려한 구현과 검토", en: "Security-minded implementation and review" },
     ],
   },
 ];
@@ -201,205 +126,421 @@ const Home = () => {
   const { language, t } = useLanguage();
   const paragraphs = INTRO_PARAGRAPHS[language];
 
-  const seoTitle = t("zeroday0619", "zeroday0619");
-  const seoDescription = t(
-    "Python 소프트웨어 엔지니어 zeroday0619.",
-    "Python software engineer zeroday0619."
-  );
-
   return (
     <>
       <SEO
-        title={seoTitle}
-        description={seoDescription}
+        title="zeroday0619"
+        description={t(
+          "Python 소프트웨어 엔지니어 zeroday0619.",
+          "Python software engineer zeroday0619."
+        )}
         canonical="/"
         lang={language}
         image="/images/profile.jpg"
-        imageAlt="zeroday0619 profile photo"
+        imageAlt={t("보라색 픽셀 아트 캐릭터", "Purple pixel-art character")}
       />
-    <div className="min-h-screen bg-base-200">
-      {/* Hero Section - OneUI Style with viewing area at top */}
-      <section className="pt-16 pb-8 px-6">
-        <div className="max-w-6xl mx-auto">
-          {/* Profile Card */}
-          <div className="oneui-card p-8 md:p-12 oneui-animate-fade-in">
-            <div className="flex flex-col lg:flex-row items-center gap-10">
-              {/* Profile Image */}
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full blur-2xl" />
-                <Image
-                  src="/images/profile.jpg"
-                  alt="zeroday0619 profile photo"
-                  width={280}
-                  height={280}
-                  className="relative rounded-full shadow-oneui-lg ring-4 ring-base-200"
-                  priority
-                />
-              </div>
 
-              {/* Profile Info */}
-              <div className="flex-1 text-center lg:text-left">
-                <h1 className="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-primary to-primary-focus bg-clip-text text-transparent">
-                  {t("zeroday0619", "zeroday0619")}
-                </h1>
-                <p className="text-lg text-base-content/60 mb-6 font-medium">
-                  Python Software Engineer
-                </p>
-                
-                {/* Contact Buttons - Interaction area */}
-                <div className="flex flex-wrap justify-center lg:justify-start gap-3">
-                  {CONTACT_LINKS.map(({ href, logo, label }) => (
-                    <a
-                      key={logo}
-                      href={href}
-                      className="flex items-center gap-2 px-5 py-3 rounded-oneui-sm bg-base-200 hover:bg-primary hover:text-white transition-all duration-300 font-medium"
-                      aria-label={label}
-                      target={href.startsWith("mailto:") ? undefined : "_blank"}
-                      rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                    >
-                      <SVG logo={logo} width="20" height="20" />
-                      <span>{label}</span>
-                    </a>
-                  ))}
-                  <Link
-                    href="/nintendo-switch"
-                    className="flex items-center gap-2 px-5 py-3 rounded-oneui-sm bg-base-200 hover:bg-primary hover:text-white transition-all duration-300 font-medium"
-                    aria-label={t("닌텐도 스위치 친구코드", "Nintendo Switch Friend Code")}
-                  >
-                    <NintendoSwitchIcon />
-                    <span>{t("닌텐도 스위치", "Nintendo Switch")}</span>
-                  </Link>
-                  <Link
-                    href="/pokemon-champions"
-                    className="flex items-center gap-2 px-5 py-3 rounded-oneui-sm bg-base-200 hover:bg-primary hover:text-white transition-all duration-300 font-medium"
-                    aria-label={t("Pokémon Champions 트레이너 친구 추가", "Pokémon Champions Trainer Friend Add")}
-                  >
-                    <img
-                      src="https://champions.pokemon.com/favicons/favicon.svg"
-                      alt=""
-                      width="20"
-                      height="20"
-                      className="shrink-0"
-                      aria-hidden="true"
-                    />
-                    <span>{t("Pokémon™ Champions", "Pokémon Champions")}</span>
-                  </Link>
-                </div>
+      <div className="page-shell">
+        <section className="nv-hero" aria-labelledby="home-title">
+          <div className="site-container nv-hero-grid">
+            <div className="nv-hero-copy">
+              <p className="page-kicker">Python Software Engineer</p>
+              <h1 id="home-title">
+                {t("오픈소스에서,", "Open source.")}
+                <span>{t("실용적인 시스템까지.", "Practical systems.")}</span>
+              </h1>
+              <p className="nv-hero-summary">
+                {t(
+                  "Python과 Rust를 중심으로, 안정적인 소프트웨어와 오픈소스 생태계를 만듭니다.",
+                  "I build reliable software and open-source ecosystems with Python and Rust."
+                )}
+              </p>
+              <div className="button-row">
+                <a className="button button-primary" href="mailto:euiseo.cha@gmail.com">
+                  {t("연락하기", "Get in touch")}
+                </a>
+                <a className="arrow-link arrow-link-dark" href="#projects">
+                  {t("프로젝트 보기", "View projects")} <span aria-hidden="true">→</span>
+                </a>
               </div>
+              <dl className="nv-hero-facts">
+                <div><dt>Community</dt><dd>Ubuntu Member · Debian</dd></div>
+                <div><dt>Core stack</dt><dd>Python · Rust</dd></div>
+                <div><dt>Location</dt><dd>Seoul · UTC+9</dd></div>
+              </dl>
+            </div>
+
+            <figure className="nv-hero-visual">
+              <Image
+                src="/images/profile.jpg"
+                alt={t("보라색 픽셀 아트 캐릭터", "Purple pixel-art character")}
+                width={480}
+                height={480}
+                className="nv-profile-image"
+                priority
+              />
+              <figcaption><span aria-hidden="true" />zeroday0619.dev</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section className="section" aria-labelledby="about-title">
+          <div className="site-container editorial-grid">
+            <header className="section-heading">
+              <p className="page-kicker">{t("소개", "About")}</p>
+              <h2 id="about-title">{t("커뮤니티와 코드 사이에서", "Between community and code")}</h2>
+            </header>
+            <div className="editorial-copy">
+              {paragraphs.map((text) => <p key={text}>{text}</p>)}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* About Section - Single Focus block */}
-      <section className="py-8 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6 px-2">{t("소개", "About Me")}</h2>
-          <div className="oneui-card p-8 oneui-animate-fade-in">
-            <div className="space-y-4">
-              {paragraphs.map((text, index) => (
-                <p 
-                  key={index} 
-                  className="text-base-content/80 leading-relaxed"
-                >
-                  {text}
-                </p>
+        <section className="section section-soft" aria-labelledby="experience-title">
+          <div className="site-container experience-layout">
+            <header className="section-heading">
+              <p className="page-kicker">Work experience</p>
+              <h2 id="experience-title">{t("업무 경험", "Work experience")}</h2>
+              <p>
+                {t(
+                  "연구망 인프라 환경에서 실무 경험을 쌓고 있습니다.",
+                  "Building hands-on experience with research network infrastructure."
+                )}
+              </p>
+            </header>
+
+            <article className="experience-card">
+              <span className="card-corner" aria-hidden="true" />
+              <div className="experience-primary">
+                <p className="card-label">{t("현재", "Current role")}</p>
+                <h3>
+                  {t(
+                    "KISTI - 한국과학기술정보연구원",
+                    "KISTI - Korea Institute of Science and Technology Information"
+                  )}
+                </h3>
+              </div>
+
+              <dl className="experience-meta">
+                <div>
+                  <dt>{t("직무", "Position")}</dt>
+                  <dd>{t("인턴 · 인프라 / KREONET", "Intern · Infrastructure / KREONET")}</dd>
+                </div>
+                <div>
+                  <dt>{t("근무지", "Location")}</dt>
+                  <dd>{t("대전, 대한민국", "Daejeon, South Korea")}</dd>
+                </div>
+                <div>
+                  <dt>{t("기간", "Duration")}</dt>
+                  <dd>
+                    <time dateTime="2026-07">{t("2026년 7월", "July 2026")}</time>
+                    {t(" – 현재", " – Present")}
+                  </dd>
+                </div>
+              </dl>
+            </article>
+          </div>
+        </section>
+
+        <section className="section" aria-labelledby="activities-title">
+          <div className="site-container">
+            <header className="section-heading section-heading-wide">
+              <div>
+                <p className="page-kicker">Extra-curricular</p>
+                <h2 id="activities-title">{t("커뮤니티와 행사 활동", "Community and event activities")}</h2>
+              </div>
+              <p>
+                {t(
+                  "Ubuntu와 Debian 커뮤니티에서 운영, 조정, 행사 조직을 맡고 있습니다.",
+                  "Supporting Ubuntu and Debian communities through moderation and event organization."
+                )}
+              </p>
+            </header>
+
+            <div className="activity-grid">
+              <a
+                className="activity-card"
+                href="https://wiki.ubuntu.com/Membership"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="card-corner" aria-hidden="true" />
+                <p className="card-label">Membership</p>
+                <h3>Ubuntu Member</h3>
+                <p>{t("Ubuntu 커뮤니티 공식 멤버", "Official Ubuntu community member")}</p>
+                <span className="activity-card-action">
+                  {t("멤버십 안내 보기", "View membership")} <span aria-hidden="true">↗</span>
+                </span>
+              </a>
+
+              <a
+                className="activity-card"
+                href="https://disclosures.ubuntu-kr.org/organizers/gen7/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="card-corner" aria-hidden="true" />
+                <p className="card-label">Community moderation</p>
+                <h3>Ubuntu Korea Community</h3>
+                <p>Community Moderation Team · Forum Moderator</p>
+                <span className="activity-card-action">
+                  {t("운영진 정보 보기", "View organizer profile")} <span aria-hidden="true">↗</span>
+                </span>
+              </a>
+
+              <article className="activity-card">
+                <span className="card-corner" aria-hidden="true" />
+                <p className="card-label">Conference organizing</p>
+                <h3>UbuCon Korea</h3>
+                <ul className="feature-list compact">
+                  <li>UbuCon Korea 2025 Organizer</li>
+                  <li>UbuCon Korea 2026 Organizer</li>
+                </ul>
+              </article>
+
+              <article className="activity-card">
+                <span className="card-corner" aria-hidden="true" />
+                <p className="card-label">Debian community events</p>
+                <h3>MiniDebConf</h3>
+                <ul className="feature-list compact">
+                  <li>MiniDebConf Busan 2025 Team</li>
+                  <li>MiniDebConf Korea 2026 Team · Chief Organizer</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section className="section section-soft" aria-labelledby="skills-title">
+          <div className="site-container">
+            <header className="section-heading section-heading-wide">
+              <div>
+                <p className="page-kicker">{t("역량", "Capabilities")}</p>
+                <h2 id="skills-title">{t("기술과 작업 방식", "Technology and practice")}</h2>
+              </div>
+              <p>{t("언어, 인프라, 품질 기준을 한 흐름으로 연결합니다.", "Connecting languages, infrastructure, and quality into one workflow.")}</p>
+            </header>
+
+            <div className="feature-grid">
+              {SKILL_CATEGORIES.map((category, index) => (
+                <article className="feature-card" key={category.title.en}>
+                  <span className="card-corner" aria-hidden="true" />
+                  <span className="card-index" aria-hidden="true">0{index + 1}</span>
+                  <h3>{category.title[language]}</h3>
+                  <ul className="feature-list">
+                    {category.items.map((item) => <li key={item.en}>{item[language]}</li>)}
+                  </ul>
+                </article>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Skills Section */}
-      <section className="py-8 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6 px-2">{t("기술", "Skills")}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {SKILL_CATEGORIES.map((category) => (
-              <div key={category.title.en} className="oneui-card p-6 oneui-animate-fade-in">
-                <h3 className="text-lg font-bold mb-3 text-primary">
-                  {category.title[language]}
-                </h3>
-                <ul className="list-disc list-inside space-y-2 text-base-content/75 text-sm">
-                  {category.items.map((item, idx) => (
-                    <li key={idx}>{item[language]}</li>
-                  ))}
-                </ul>
+        <section id="projects" className="section" aria-labelledby="projects-title">
+          <div className="site-container">
+            <header className="section-heading section-heading-wide">
+              <div>
+                <p className="page-kicker">{t("선별 작업", "Selected work")}</p>
+                <h2 id="projects-title">{t("프로젝트", "Projects")}</h2>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              <p>{t("시스템 도구부터 Discord 기반 제품까지, 유지보수를 고려해 설계합니다.", "From system tools to Discord products, designed for maintainability.")}</p>
+            </header>
 
-      {/* Projects Section */}
-      <section className="py-8 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6 px-2">{t("프로젝트", "Projects")}</h2>
-          <div className="space-y-4">
-            {PROJECTS.map((project) => (
-              <div key={project.name} className="oneui-card p-6 oneui-animate-fade-in">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <h3 className="text-xl font-bold text-primary">{project.name}</h3>
-                      {project.badge && (
-                        <span className="px-2 py-1 rounded-oneui-sm text-xs font-semibold bg-base-200 text-base-content/70">
-                          {project.badge[language]}
-                        </span>
-                      )}
-                      {project.private && (
-                        <span className="px-2 py-1 rounded-oneui-sm text-xs font-semibold bg-warning/20 text-warning">
-                          {t("비공개", "Private")}
-                        </span>
-                      )}
+            <div className="project-grid">
+              {PROJECTS.map((project) => (
+                <article className="project-card" key={project.name}>
+                  <span className="card-corner" aria-hidden="true" />
+                  <div className="project-heading">
+                    <h3>{project.name}</h3>
+                    <div className="tag-row">
+                      {project.badge && <span className="tag">{project.badge[language]}</span>}
+                      {project.private && <span className="tag tag-muted">{t("비공개", "Private")}</span>}
                     </div>
-                    <p className="text-base-content/80 mb-3">
-                      {project.description[language]}
-                    </p>
-                    <ul className="list-disc list-inside space-y-1 text-base-content/70 text-sm">
-                      {project.features[language].map((feature, idx) => (
-                        <li key={idx}>{feature}</li>
-                      ))}
-                    </ul>
                   </div>
-                  <div className="flex flex-wrap gap-2">
+                  <p>{project.description[language]}</p>
+                  <ul className="feature-list compact">
+                    {project.features[language].map((feature) => <li key={feature}>{feature}</li>)}
+                  </ul>
+                  <div className="card-actions">
                     {project.links.github && (
-                      <a
-                        href={project.links.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-disabled={project.private ? true : undefined}
-                        className={
-                          project.private
-                            ? "flex items-center gap-2 px-4 py-2 rounded-oneui-sm bg-base-200 text-base-content/40 cursor-not-allowed text-sm font-medium"
-                            : "flex items-center gap-2 px-4 py-2 rounded-oneui-sm bg-base-200 hover:bg-primary hover:text-white transition-all duration-300 text-sm font-medium"
-                        }
-                        onClick={(e) => {
-                          if (project.private) e.preventDefault();
-                        }}
-                      >
-                        <SVG logo="github" width="16" height="16" />
-                        GitHub
-                      </a>
+                      project.private ? (
+                        <button className="button button-disabled" type="button" disabled>
+                          <SVG logo="github" width="16" height="16" />
+                          {t("비공개 저장소", "Private repository")}
+                        </button>
+                      ) : (
+                        <a className="button button-outline" href={project.links.github} target="_blank" rel="noopener noreferrer">
+                          <SVG logo="github" width="16" height="16" />
+                          GitHub
+                        </a>
+                      )
                     )}
                     {project.links.crates && (
-                      <a
-                        href={project.links.crates}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 rounded-oneui-sm bg-base-200 hover:bg-primary hover:text-white transition-all duration-300 text-sm font-medium"
-                      >
-                        crates.io
+                      <a className="arrow-link" href={project.links.crates} target="_blank" rel="noopener noreferrer">
+                        crates.io <span aria-hidden="true">↗</span>
                       </a>
                     )}
                   </div>
-                </div>
-              </div>
-            ))}
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+
+        <section className="contact-strip" aria-labelledby="contact-title">
+          <div className="site-container contact-strip-grid">
+            <div>
+              <p className="page-kicker">{t("연결", "Connect")}</p>
+              <h2 id="contact-title">{t("함께 만들 프로젝트가 있나요?", "Have a project to build together?")}</h2>
+            </div>
+            <div className="contact-actions">
+              {CONTACT_LINKS.map(({ href, logo, label }) => (
+                <a
+                  className="button button-dark-outline"
+                  key={logo}
+                  href={href}
+                  target={href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                >
+                  <SVG logo={logo} width="18" height="18" />
+                  {label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section section-soft game-profile-section" aria-labelledby="game-profile-title">
+          <div className="site-container profile-link-layout">
+            <header className="section-heading">
+              <p className="page-kicker">Play profiles</p>
+              <h2 id="game-profile-title">{t("게임에서 연결하기", "Connect in games")}</h2>
+              <p>
+                {t(
+                  "친구 코드와 트레이너 ID는 각 게임 프로필에서 확인할 수 있어요.",
+                  "Find my friend code and trainer ID in their dedicated game profiles."
+                )}
+              </p>
+            </header>
+
+            <div className="profile-link-grid">
+              <Link className="profile-link-card" href="/nintendo-switch">
+                <span className="card-corner" aria-hidden="true" />
+                <p className="card-label">Nintendo account</p>
+                <h3>Nintendo Switch</h3>
+                <p>{t("친구 코드와 모바일 추가 링크", "Friend code and mobile add link")}</p>
+                <span className="profile-link-card-action">
+                  {t("프로필 보기", "View profile")} <span aria-hidden="true">→</span>
+                </span>
+              </Link>
+
+              <Link className="profile-link-card" href="/pokemon-champions">
+                <span className="card-corner" aria-hidden="true" />
+                <p className="card-label">Trainer profile</p>
+                <h3>Pokémon Champions</h3>
+                <p>{t("트레이너 ID와 친구 추가 안내", "Trainer ID and friend instructions")}</p>
+                <span className="profile-link-card-action">
+                  {t("프로필 보기", "View profile")} <span aria-hidden="true">→</span>
+                </span>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="section music-profile-section" aria-labelledby="music-profile-title">
+          <div className="site-container profile-link-layout">
+            <header className="section-heading">
+              <p className="page-kicker">Music profiles</p>
+              <h2 id="music-profile-title">{t("음악으로 연결하기", "Connect through music")}</h2>
+              <p>
+                {t(
+                  "Apple Music과 Spotify에서 공개 음악 프로필을 확인할 수 있어요.",
+                  "Find my public music profiles on Apple Music and Spotify."
+                )}
+              </p>
+            </header>
+
+            <div className="profile-link-grid">
+              <a
+                className="profile-link-card"
+                href="https://music.apple.com/profile/zeroday0619_jp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="card-corner" aria-hidden="true" />
+                <p className="card-label">Music profile</p>
+                <h3>Apple Music</h3>
+                <p>zeroday0619_jp</p>
+                <span className="profile-link-card-action">
+                  {t("프로필 열기", "Open profile")} <span aria-hidden="true">↗</span>
+                </span>
+              </a>
+
+              <a
+                className="profile-link-card"
+                href="https://open.spotify.com/user/317noec75guoym4t6dzkbq5hwvxq"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="card-corner" aria-hidden="true" />
+                <p className="card-label">Music profile</p>
+                <h3>Spotify</h3>
+                <p>zeroday0619</p>
+                <span className="profile-link-card-action">
+                  {t("프로필 열기", "Open profile")} <span aria-hidden="true">↗</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section className="section section-soft media-profile-section" aria-labelledby="media-profile-title">
+          <div className="site-container profile-link-layout">
+            <header className="section-heading">
+              <p className="page-kicker">Video &amp; live</p>
+              <h2 id="media-profile-title">{t("영상과 라이브로 연결하기", "Connect through video and live")}</h2>
+              <p>
+                {t(
+                  "YouTube 영상과 CHZZK 라이브 채널을 확인할 수 있어요.",
+                  "Find my videos on YouTube and live streams on CHZZK."
+                )}
+              </p>
+            </header>
+
+            <div className="profile-link-grid">
+              <a
+                className="profile-link-card"
+                href="https://www.youtube.com/@zeroday0619"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="card-corner" aria-hidden="true" />
+                <p className="card-label">Video channel</p>
+                <h3>YouTube</h3>
+                <p>@zeroday0619</p>
+                <span className="profile-link-card-action">
+                  {t("채널 열기", "Open channel")} <span aria-hidden="true">↗</span>
+                </span>
+              </a>
+
+              <a
+                className="profile-link-card"
+                href="https://chzzk.naver.com/b68ff8de78382d4288f8362243bcd748"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="card-corner" aria-hidden="true" />
+                <p className="card-label">Live streaming</p>
+                <h3>CHZZK</h3>
+                <p>{t("라이브 스트리밍 채널", "Live streaming channel")}</p>
+                <span className="profile-link-card-action">
+                  {t("채널 열기", "Open channel")} <span aria-hidden="true">↗</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
     </>
   );
 };

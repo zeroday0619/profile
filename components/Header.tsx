@@ -2,164 +2,123 @@ import ActiveLink from "./ActiveLink";
 import ThemeController from "./ThemeController";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Disclosure } from "@headlessui/react";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
 const Header = () => {
   const { language, toggleLanguage, t } = useLanguage();
-  const { asPath } = useRouter();
-  const [isHiddenOnScroll, setIsHiddenOnScroll] = useState(false);
-
-  useEffect(() => {
-    let lastY = window.scrollY;
-
-    const handleScroll = () => {
-      const currentY = window.scrollY;
-      const isScrollingDown = currentY > lastY;
-      const shouldHide = isScrollingDown && currentY > 96;
-
-      setIsHiddenOnScroll(shouldHide);
-      lastY = currentY;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
-    <header
-      className={`sticky top-0 z-50 px-4 pt-4 md:px-6 transition-transform duration-300 ${
-        isHiddenOnScroll ? "-translate-y-[calc(100%+1.25rem)]" : "translate-y-0"
-      }`}
-    >
+    <header className="site-header">
+      <a className="skip-link" href="#main-content">
+        {t("본문으로 건너뛰기", "Skip to content")}
+      </a>
+      <div className="site-utility-bar">
+        <div className="site-container site-utility-inner">
+          <span>Python · Linux · Open Source</span>
+          <span>{t("서울 · UTC+9", "Seoul · UTC+9")}</span>
+        </div>
+      </div>
+
       <Disclosure
         as="nav"
-        key={asPath}
-        className="oneui-header-shell"
-        aria-label="Main navigation"
+        className="site-navigation"
+        aria-label={t("주요 탐색", "Main navigation")}
       >
-        {({ open }) => (
+        {({ open, close }) => (
           <>
-            <div className="oneui-header-inner">
-              <div className="oneui-brand-wrap">
-                <ActiveLink
-                  activeClassName="oneui-brand-active"
-                  className="oneui-brand"
-                  href="/"
-                >
-                  <span className="oneui-brand-text">zeroday0619</span>
-                </ActiveLink>
+            <div className="site-container site-navigation-inner">
+              <ActiveLink
+                activeClassName="site-brand-active"
+                className="site-brand"
+                href="/"
+              >
+                <span className="site-brand-mark" aria-hidden="true" />
+                <span>zeroday0619</span>
+              </ActiveLink>
 
-                <div className="oneui-nav-segment hidden sm:flex">
-                  <ActiveLink
-                    activeClassName="oneui-nav-tab-active"
-                    className="oneui-nav-tab"
-                    href="/outsourcing"
-                  >
-                    <span>{t("외주", "Outsourcing")}</span>
-                  </ActiveLink>
-                </div>
+              <div className="site-desktop-nav">
+                <ActiveLink activeClassName="site-nav-link-active" className="site-nav-link" href="/">
+                  {t("홈", "Home")}
+                </ActiveLink>
+                <ActiveLink
+                  activeClassName="site-nav-link-active"
+                  className="site-nav-link"
+                  href="/outsourcing"
+                >
+                  {t("외주", "Outsourcing")}
+                </ActiveLink>
+                <a
+                  href="https://cv.zeroday0619.dev/"
+                  className="site-nav-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  CV ↗
+                </a>
               </div>
 
-              <div className="oneui-utility-wrap">
+              <div className="site-controls">
                 <button
+                  type="button"
                   onClick={toggleLanguage}
-                  className="oneui-control-btn"
+                  className="site-control-button"
                   aria-label={
-                    language === "ko" ? "Switch to English" : "한국어로 전환"
+                    language === "ko"
+                      ? "언어를 영어(EN)로 변경"
+                      : "Switch language to Korean (KO)"
                   }
                 >
-                  <span className="oneui-control-icon" aria-hidden="true">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                    </svg>
-                  </span>
-                  <span className="oneui-control-label hidden sm:inline">
-                    {t("언어", "Language")}
-                  </span>
-                  <span className="oneui-chip-group" aria-hidden="true">
-                    <span className={`oneui-chip ${language === "ko" ? "is-active" : ""}`}>
-                      KO
-                    </span>
-                    <span className={`oneui-chip ${language === "en" ? "is-active" : ""}`}>
-                      EN
-                    </span>
-                  </span>
+                  <span aria-hidden="true">{language === "ko" ? "EN" : "KO"}</span>
                 </button>
-
-                {/* Theme Controller */}
                 <ThemeController />
-
                 <Disclosure.Button
-                  className="oneui-menu-btn sm:hidden"
-                  aria-label={open ? "Close menu" : "Open menu"}
+                  className="site-menu-button"
+                  aria-label={open ? t("메뉴 닫기", "Close menu") : t("메뉴 열기", "Open menu")}
+                  onKeyDown={(event) => {
+                    if (event.key === "Escape" && open) {
+                      event.preventDefault();
+                      close();
+                    }
+                  }}
                 >
-                  {open ? (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M18 6 6 18" />
-                      <path d="M6 6 18 18" />
-                    </svg>
-                  ) : (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M4 6h16" />
-                      <path d="M4 12h16" />
-                      <path d="M4 18h16" />
-                    </svg>
-                  )}
+                  <span aria-hidden="true">{open ? "×" : "≡"}</span>
                 </Disclosure.Button>
               </div>
             </div>
 
-            <Disclosure.Panel className="sm:hidden oneui-mobile-panel">
-              <div className="oneui-mobile-list">
+            <Disclosure.Panel
+              className="site-mobile-panel"
+              onKeyDown={(event) => {
+                if (event.key === "Escape") {
+                  event.preventDefault();
+                  close();
+                }
+              }}
+            >
+              <div className="site-container site-mobile-list">
                 <ActiveLink
-                  activeClassName="oneui-mobile-link-active"
-                  className="oneui-mobile-link"
-                  href="/outsourcing"
+                  activeClassName="site-mobile-link-active"
+                  className="site-mobile-link"
+                  href="/"
+                  onClick={() => close()}
                 >
-                  <span>{t("외주", "Outsourcing")}</span>
+                  {t("홈", "Home")}
+                </ActiveLink>
+                <ActiveLink
+                  activeClassName="site-mobile-link-active"
+                  className="site-mobile-link"
+                  href="/outsourcing"
+                  onClick={() => close()}
+                >
+                  {t("외주", "Outsourcing")}
                 </ActiveLink>
                 <a
                   href="https://cv.zeroday0619.dev/"
-                  className="oneui-mobile-link"
+                  className="site-mobile-link"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => close()}
                 >
-                  <span>CV</span>
+                  CV ↗
                 </a>
               </div>
             </Disclosure.Panel>

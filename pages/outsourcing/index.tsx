@@ -4,12 +4,12 @@ import SEO from "@/components/SEO";
 
 const SERVICE_DESCRIPTIONS = {
   ko: [
-    "저는 Python 프로그래밍 언어를 전문으로 하는 개발자로, 고객의 개별적인 요구에 맞춤형 솔루션을 제공합니다.",
-    "고객의 성공적인 프로젝트 진행을 최우선으로 생각하며, 직접 소통하여 이해하고 협력하는 과정을 통해 만족스러운 결과를 만들어가기 위해 최선을 다합니다.",
+    "Python 프로그래밍을 중심으로, 고객의 개별 요구에 맞춘 솔루션을 제공합니다.",
+    "직접 소통하고 요구사항을 검증하며, 배포 이후까지 유지할 수 있는 결과를 만드는 데 집중합니다.",
   ],
   en: [
-    "As a developer specializing in Python programming, I provide customized solutions tailored to each client's individual needs.",
-    "I prioritize the successful progress of client projects and do my best to create satisfactory results through direct communication and collaboration.",
+    "I provide Python-focused solutions tailored to each client's specific requirements.",
+    "I focus on direct communication, verified requirements, and maintainable outcomes beyond initial delivery.",
   ],
 } as const;
 
@@ -17,8 +17,8 @@ const SERVICES = {
   ko: [
     {
       title: "FastAPI 서비스",
-      description: "FastAPI 프레임워크를 사용한 웹 어플리케이션를 제작해드립니다.",
-      image: "https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png",
+      description: "FastAPI 프레임워크를 사용한 웹 애플리케이션을 설계하고 구현합니다.",
+      image: "/images/code.webp",
       features: ["빠른 성능", "자동 문서화", "타입 안정성"],
       consultLink: "https://open.kakao.com/o/ske9NHah",
       cta: "상담하기",
@@ -26,12 +26,12 @@ const SERVICES = {
   ],
   en: [
     {
-      title: "FastAPI",
-      description: "I offer web application development services using the FastAPI framework.",
-      image: "https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png",
-      features: ["Fast Performance", "Auto Documentation", "Type Safety"],
+      title: "FastAPI services",
+      description: "I design and implement web applications with the FastAPI framework.",
+      image: "/images/code.webp",
+      features: ["Fast performance", "Automatic documentation", "Type safety"],
       consultLink: "https://open.kakao.com/o/ske9NHah",
-      cta: "Contact",
+      cta: "Start a consultation",
     },
   ],
 } as const;
@@ -41,127 +41,104 @@ const Outsourcing = () => {
   const descriptions = SERVICE_DESCRIPTIONS[language];
   const services = SERVICES[language];
 
-  const seoTitle = t("외주 서비스", "Outsourcing Services");
-  const seoDescription = t(
-    "FastAPI 기반 웹 어플리케이션 등 Python 맞춤형 솔루션 외주 서비스를 제공합니다.",
-    "We offer professional outsourced services for Python-based custom solutions, including FastAPI-powered web applications."
-  );
-
   return (
     <>
       <SEO
-        title={seoTitle}
-        description={seoDescription}
+        title={t("외주 서비스", "Outsourcing Services")}
+        description={t(
+          "FastAPI 기반 웹 애플리케이션을 포함한 Python 맞춤형 솔루션 외주 서비스를 제공합니다.",
+          "Custom Python development services, including FastAPI-powered web applications."
+        )}
         canonical="/outsourcing"
         lang={language}
         image="/images/code.webp"
-        imageAlt={t("코드 이미지", "Code image")}
+        imageAlt={t("소스 코드 화면", "Source code screen")}
       />
-    <div className="min-h-screen bg-base-200">
-      {/* Hero Section */}
-      <section className="pt-16 pb-8 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="oneui-card p-8 md:p-12 oneui-animate-fade-in">
-            <div className="text-center max-w-3xl mx-auto">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-info bg-clip-text text-transparent">
-                {t("외주 서비스", "Outsourcing Services")}
-              </h1>
-              <p className="text-lg text-base-content/60 mb-8">
-                {t("Python 기반 맞춤형 솔루션", "Python-based Custom Solutions")}
-              </p>
-              
-              <div className="space-y-4">
-                {descriptions.map((text, index) => (
-                  <p 
-                    key={index} 
-                    className="text-base-content/80 leading-relaxed"
-                  >
-                    {text}
-                  </p>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Services Section */}
-      <section className="py-8 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6 px-2">
-            {t("제공 서비스", "Services Offered")}
-          </h2>
-          
-          <div className="grid gap-6">
-            {services.map((service, index) => (
-              <article 
-                key={index}
-                className="oneui-card overflow-hidden oneui-animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="flex flex-col md:flex-row">
-                  {/* Image Section */}
-                  <div className="md:w-1/3 bg-gradient-to-br from-primary/10 to-info/10 p-8 flex items-center justify-center">
+      <div className="page-shell">
+        <section className="page-hero" aria-labelledby="outsourcing-title">
+          <div className="site-container page-hero-grid">
+            <div className="page-hero-copy">
+              <p className="page-kicker">{t("개발 파트너십", "Development partnership")}</p>
+              <h1 id="outsourcing-title">{t("Python 기반, 맞춤형 솔루션", "Python-powered custom solutions")}</h1>
+              <div className="hero-body-copy">
+                {descriptions.map((text) => <p key={text}>{text}</p>)}
+              </div>
+              <a className="arrow-link arrow-link-dark" href="#services">
+                {t("서비스 보기", "Explore services")} <span aria-hidden="true">→</span>
+              </a>
+            </div>
+
+            <figure className="hero-media">
+              <Image
+                src="/images/code.webp"
+                alt={t("소스 코드 화면", "Source code screen")}
+                width={691}
+                height={369}
+                loading="eager"
+              />
+              <figcaption>
+                <span aria-hidden="true" />
+                FastAPI · Python · API
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="services" className="section" aria-labelledby="services-title">
+          <div className="site-container">
+            <header className="section-heading section-heading-wide">
+              <div>
+                <p className="page-kicker">{t("제공 범위", "What I deliver")}</p>
+                <h2 id="services-title">{t("제공 서비스", "Services")}</h2>
+              </div>
+              <p>{t("작은 API부터 운영 가능한 웹 서비스까지, 요구사항에 맞춰 범위를 정합니다.", "From focused APIs to production-ready web services, scoped around your requirements.")}</p>
+            </header>
+
+            <div className="service-list">
+              {services.map((service) => (
+                <article className="service-card" key={service.title}>
+                  <div className="service-image">
                     <Image
                       src={service.image}
-                      alt={`${service.title} Logo`}
-                      width={200}
-                      height={100}
-                      className="object-contain"
+                      alt={t("서비스 구현 코드 예시", "Service implementation code sample")}
+                      width={691}
+                      height={369}
+                      loading="eager"
                     />
                   </div>
-                  
-                  {/* Content Section */}
-                  <div className="md:w-2/3 p-8">
-                    <h3 className="text-2xl font-bold mb-3 text-primary">
-                      {service.title}
-                    </h3>
-                    <p className="text-base-content/70 mb-6 leading-relaxed">
-                      {service.description}
-                    </p>
-                    
-                    {/* Features */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {service.features.map((feature, i) => (
-                        <span 
-                          key={i}
-                          className="px-4 py-2 bg-base-200 rounded-full text-sm font-medium"
-                        >
-                          {feature}
-                        </span>
-                      ))}
+                  <div className="service-content">
+                    <span className="card-corner" aria-hidden="true" />
+                    <p className="card-label">01 · Web application</p>
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                    <div className="tag-row">
+                      {service.features.map((feature) => <span className="tag" key={feature}>{feature}</span>)}
                     </div>
-                    
-                    {/* CTA Button */}
                     <a
                       href={service.consultLink}
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-oneui-sm font-semibold hover:bg-primary-focus transition-all duration-300 hover:scale-105"
+                      className="button button-primary"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <span>{service.cta}</span>
-                      <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        width="16" 
-                        height="16" 
-                        viewBox="0 0 24 24" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                      </svg>
+                      {service.cta} <span aria-hidden="true">↗</span>
                     </a>
                   </div>
-                </div>
-              </article>
-            ))}
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+
+        <section className="delivery-strip" aria-label={t("작업 원칙", "Delivery principles")}>
+          <div className="site-container delivery-grid">
+            <p>{t("직접 소통", "Direct communication")}</p>
+            <p>{t("명확한 범위", "Clear scope")}</p>
+            <p>{t("유지 가능한 코드", "Maintainable code")}</p>
+            <p>{t("검증 가능한 결과", "Verifiable outcomes")}</p>
+          </div>
+        </section>
+      </div>
     </>
   );
 };

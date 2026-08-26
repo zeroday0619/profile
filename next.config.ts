@@ -7,8 +7,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "fastapi.tiangolo.com",
-        pathname: "/img/**",
+        hostname: "champions.pokemon.com",
+        pathname: "/favicons/**",
       },
     ],
   },

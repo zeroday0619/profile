@@ -1,57 +1,77 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { themeChange } from "theme-change";
+import { useEffect, useSyncExternalStore } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+
+type Theme = "light" | "dark";
+
+const THEME_STORAGE_KEY = "theme";
+const THEME_CHANGE_EVENT = "theme-change";
+let currentTheme: Theme = "light";
+
+const getThemeSnapshot = (): Theme => {
+  try {
+    const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+
+    currentTheme =
+      storedTheme === "dark" || storedTheme === "oneui-dark" ? "dark" : "light";
+  } catch {
+    // The in-memory value keeps the control usable when storage is unavailable.
+  }
+
+  return currentTheme;
+};
+
+const getServerThemeSnapshot = (): Theme => "light";
+
+const subscribeToTheme = (onStoreChange: () => void) => {
+  window.addEventListener("storage", onStoreChange);
+  window.addEventListener(THEME_CHANGE_EVENT, onStoreChange);
+
+  return () => {
+    window.removeEventListener("storage", onStoreChange);
+    window.removeEventListener(THEME_CHANGE_EVENT, onStoreChange);
+  };
+};
 
 const ThemeController = () => {
-  const [isDark, setIsDark] = useState(false);
+  const { t } = useLanguage();
+  const theme = useSyncExternalStore(
+    subscribeToTheme,
+    getThemeSnapshot,
+    getServerThemeSnapshot
+  );
+  const isDark = theme === "dark";
 
   useEffect(() => {
-    themeChange(false);
-    const storedTheme = localStorage.getItem("theme");
-    const resolvedTheme =
-      storedTheme === "dark" || storedTheme === "oneui-dark"
-        ? "dark"
-        : storedTheme === "light" || storedTheme === "oneui"
-          ? "light"
-          : document.documentElement.getAttribute("data-theme") === "dark"
-            ? "dark"
-            : "light";
-
-    document.documentElement.setAttribute("data-theme", resolvedTheme);
-    localStorage.setItem("theme", resolvedTheme);
-    setIsDark(resolvedTheme === "dark");
-  }, []);
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   const handleToggle = () => {
-    const newTheme = isDark ? "light" : "dark";
+    const newTheme: Theme = isDark ? "light" : "dark";
+    currentTheme = newTheme;
     document.documentElement.setAttribute("data-theme", newTheme);
-    localStorage.setItem("theme", newTheme);
-    setIsDark(!isDark);
+    try {
+      window.localStorage.setItem(THEME_STORAGE_KEY, newTheme);
+    } catch {
+      // The document theme remains authoritative when storage is unavailable.
+    }
+    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
   };
 
   return (
     <button
+      type="button"
       onClick={handleToggle}
-      className="oneui-control-btn"
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      className="site-control-button"
+      aria-label={
+        isDark
+          ? t("밝은 테마로 전환", "Switch to light mode")
+          : t("어두운 테마로 전환", "Switch to dark mode")
+      }
     >
-      <span className="oneui-control-icon" aria-hidden="true">
+      <span className="site-control-icon" aria-hidden="true">
         {isDark ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-          </svg>
-        ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -66,12 +86,24 @@ const ThemeController = () => {
             <circle cx="12" cy="12" r="5" />
             <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
           </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
         )}
       </span>
-      <span className="oneui-control-label hidden sm:inline">Theme</span>
-      <span className="oneui-chip-group" aria-hidden="true">
-        <span className={`oneui-chip ${!isDark ? "is-active" : ""}`}>Light</span>
-        <span className={`oneui-chip ${isDark ? "is-active" : ""}`}>Dark</span>
+      <span className="site-control-label">
+        {isDark ? t("밝게", "Light") : t("어둡게", "Dark")}
       </span>
     </button>
   );

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import SVG from "./Logos";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -10,50 +11,61 @@ const SOCIAL_LINKS = [
 ] as const;
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getUTCFullYear();
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-base-100 border-t border-base-200">
-      {/* Main Footer Content */}
-      <div className="max-w-6xl mx-auto px-6 py-10">
-        <div className="text-center">
-          <h3 className="text-lg font-bold mb-5 text-primary">
-            {t("연락처", "Contacts")}
-          </h3>
-          <div className="flex flex-wrap gap-4 justify-center">
+    <footer className="site-footer">
+      <div className="site-container footer-grid">
+        <section className="footer-brand-block" aria-labelledby="footer-brand-title">
+          <span className="footer-brand-mark" aria-hidden="true" />
+          <h2 id="footer-brand-title">zeroday0619</h2>
+          <p>
+            {t(
+              "오픈소스와 실용적인 시스템을 만드는 소프트웨어 엔지니어입니다.",
+              "A software engineer building open-source and practical systems."
+            )}
+          </p>
+        </section>
+
+        <nav className="footer-column" aria-label={t("푸터 탐색", "Footer navigation")}>
+          <h2>{t("탐색", "Explore")}</h2>
+          <Link href="/">{t("홈", "Home")}</Link>
+          <Link href="/outsourcing">{t("외주", "Outsourcing")}</Link>
+          <Link href="/nintendo-switch">Nintendo Switch</Link>
+          <Link href="/pokemon-champions">Pokémon Champions</Link>
+          <a href="https://cv.zeroday0619.dev/" target="_blank" rel="noopener noreferrer">
+            CV ↗
+          </a>
+        </nav>
+
+        <section className="footer-column" aria-labelledby="footer-contact-title">
+          <h2 id="footer-contact-title">{t("연락처", "Contacts")}</h2>
+          <div className="footer-social-list">
             {SOCIAL_LINKS.map(({ href, logo, label }) => (
               <a
                 key={logo}
                 href={href}
-                aria-label={label}
                 target={href.startsWith("mailto:") ? undefined : "_blank"}
                 rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                className="p-3 rounded-full bg-base-200 hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110"
               >
-                <SVG logo={logo} width="20" height="20" />
+                <SVG logo={logo} width="18" height="18" />
+                <span>{label}</span>
               </a>
             ))}
           </div>
-        </div>
+        </section>
       </div>
 
-      {/* Copyright Bar */}
-      <div className="bg-base-200 py-4">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <p className="text-sm text-base-content/60">
-            Copyright © {currentYear} zeroday0619. All rights reserved.
-          </p>
-          <div className="mt-3 space-y-2 text-xs text-base-content/55">
-            <p>©Pokémon/Nintendo/Creatures/GAME FREAK</p>
-            <p>
-              {t(
-                "포켓몬스터, 포켓몬, Pokémon, Nintendo Switch는 Nintendo의 상표입니다.",
-                "Pokémon and Nintendo Switch are trademarks of Nintendo."
-              )}
-            </p>
-          </div>
-        </div>
+      <div className="site-container footer-legal">
+        <p>Copyright © {currentYear} zeroday0619. All rights reserved.</p>
+        <p>
+          ©Pokémon/Nintendo/Creatures/GAME FREAK ·{" "}
+          {t(
+            "포켓몬스터, 포켓몬, Pokémon, Nintendo Switch는 Nintendo의 상표입니다.",
+            "Pokémon and Nintendo Switch are trademarks of Nintendo."
+          )}
+        </p>
       </div>
     </footer>
   );
