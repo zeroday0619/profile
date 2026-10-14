@@ -21,7 +21,7 @@
 - Keep TypeScript strict and preserve the `@/*` import alias.
 - Follow the existing functional React component style and default-export page components.
 - Keep user-facing profile content synchronized in Korean and English through `LanguageContext` and the existing `t(korean, english)` pattern.
-- Use `DESIGN.md` as the visual authority: `#76b900` accent, black hero/header/footer chapters, flat hairline cards, 2px radii, and no decorative gradients or card shadows.
+- Use `DESIGN.md` as the visual authority: Fluent 2 semantic colors, blue brand accents, neutral light and dark surfaces, rounded controls and cards, restrained elevation, and mobile-first responsive layouts.
 - Use `next/image` for local images unless an external source cannot be handled by the configured image policy.
 - Preserve accessible labels, alternative text, keyboard behavior, and `noopener noreferrer` on external links.
 - Do not expose or copy values from `.dev.vars`, environment files, or Cloudflare secrets.

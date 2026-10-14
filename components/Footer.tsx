@@ -18,7 +18,6 @@ const Footer = () => {
     <footer className="site-footer">
       <div className="site-container footer-grid">
         <section className="footer-brand-block" aria-labelledby="footer-brand-title">
-          <span className="footer-brand-mark" aria-hidden="true" />
           <h2 id="footer-brand-title">zeroday0619</h2>
           <p>
             {t(
@@ -31,10 +30,9 @@ const Footer = () => {
         <nav className="footer-column" aria-label={t("푸터 탐색", "Footer navigation")}>
           <h2>{t("탐색", "Explore")}</h2>
           <Link href="/">{t("홈", "Home")}</Link>
-          <Link href="/outsourcing">{t("외주", "Outsourcing")}</Link>
           <Link href="/nintendo-switch">Nintendo Switch</Link>
           <Link href="/pokemon-champions">Pokémon Champions</Link>
-          <a href="https://cv.zeroday0619.dev/" target="_blank" rel="noopener noreferrer">
+          <a href="https://cv.proxy.external.zeroday0619.dev" target="_blank" rel="noopener noreferrer">
             CV ↗
           </a>
         </nav>

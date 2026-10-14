@@ -17,8 +17,8 @@ const Document = () => (
     <Head>
       <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
       <meta name="color-scheme" content="light dark" />
-      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: light)" />
-      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+      <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
+      <meta name="theme-color" content="#141414" media="(prefers-color-scheme: dark)" />
       <link
         rel="preload"
         href="/fonts/PretendardVariable.woff2"

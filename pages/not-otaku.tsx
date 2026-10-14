@@ -33,7 +33,6 @@ const NotOtakuPage = () => {
           </div>
 
           <figure className="easter-card">
-            <span className="card-corner" aria-hidden="true" />
             <Image
               src="/images/otaku.png"
               alt={imageAlt}

@@ -11,13 +11,6 @@ const Header = () => {
       <a className="skip-link" href="#main-content">
         {t("본문으로 건너뛰기", "Skip to content")}
       </a>
-      <div className="site-utility-bar">
-        <div className="site-container site-utility-inner">
-          <span>Python · Linux · Open Source</span>
-          <span>{t("서울 · UTC+9", "Seoul · UTC+9")}</span>
-        </div>
-      </div>
-
       <Disclosure
         as="nav"
         className="site-navigation"
@@ -31,7 +24,6 @@ const Header = () => {
                 className="site-brand"
                 href="/"
               >
-                <span className="site-brand-mark" aria-hidden="true" />
                 <span>zeroday0619</span>
               </ActiveLink>
 
@@ -39,15 +31,8 @@ const Header = () => {
                 <ActiveLink activeClassName="site-nav-link-active" className="site-nav-link" href="/">
                   {t("홈", "Home")}
                 </ActiveLink>
-                <ActiveLink
-                  activeClassName="site-nav-link-active"
-                  className="site-nav-link"
-                  href="/outsourcing"
-                >
-                  {t("외주", "Outsourcing")}
-                </ActiveLink>
                 <a
-                  href="https://cv.zeroday0619.dev/"
+                  href="https://cv.proxy.external.zeroday0619.dev"
                   className="site-nav-link"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -80,7 +65,13 @@ const Header = () => {
                     }
                   }}
                 >
-                  <span aria-hidden="true">{open ? "×" : "≡"}</span>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    {open ? (
+                      <path d="m5 5 10 10M15 5 5 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                    ) : (
+                      <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                    )}
+                  </svg>
                 </Disclosure.Button>
               </div>
             </div>
@@ -103,16 +94,8 @@ const Header = () => {
                 >
                   {t("홈", "Home")}
                 </ActiveLink>
-                <ActiveLink
-                  activeClassName="site-mobile-link-active"
-                  className="site-mobile-link"
-                  href="/outsourcing"
-                  onClick={() => close()}
-                >
-                  {t("외주", "Outsourcing")}
-                </ActiveLink>
                 <a
-                  href="https://cv.zeroday0619.dev/"
+                  href="https://cv.proxy.external.zeroday0619.dev"
                   className="site-mobile-link"
                   target="_blank"
                   rel="noopener noreferrer"

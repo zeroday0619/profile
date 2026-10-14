@@ -108,7 +108,7 @@ const SKILL_CATEGORIES: readonly SkillCategory[] = [
   {
     title: { ko: "인프라", en: "Infrastructure" },
     items: [
-      { ko: "Linux · Ubuntu와 RHEL", en: "Linux · Ubuntu and RHEL" },
+      { ko: "Linux · Debian / Ubuntu / RHEL", en: "Linux · Debian / Ubuntu / RHEL" },
       { ko: "Docker · 컨테이너 환경", en: "Docker · Container environments" },
       { ko: "LXD/LXC · 시스템 컨테이너", en: "LXD/LXC · System containers" },
     ],
@@ -137,19 +137,19 @@ const Home = () => {
         canonical="/"
         lang={language}
         image="/images/profile.jpg"
-        imageAlt={t("보라색 픽셀 아트 캐릭터", "Purple pixel-art character")}
+        imageAlt={t("Debian 행사 목걸이를 걸친 보라색 메타몽 인형", "Purple Ditto plush wearing a Debian event lanyard")}
       />
 
       <div className="page-shell">
-        <section className="nv-hero" aria-labelledby="home-title">
-          <div className="site-container nv-hero-grid">
-            <div className="nv-hero-copy">
+        <section className="profile-hero" aria-labelledby="home-title">
+          <div className="site-container profile-hero-grid">
+            <div className="profile-hero-copy">
               <p className="page-kicker">Python Software Engineer</p>
               <h1 id="home-title">
                 {t("오픈소스에서,", "Open source.")}
                 <span>{t("실용적인 시스템까지.", "Practical systems.")}</span>
               </h1>
-              <p className="nv-hero-summary">
+              <p className="profile-hero-summary">
                 {t(
                   "Python과 Rust를 중심으로, 안정적인 소프트웨어와 오픈소스 생태계를 만듭니다.",
                   "I build reliable software and open-source ecosystems with Python and Rust."
@@ -163,23 +163,24 @@ const Home = () => {
                   {t("프로젝트 보기", "View projects")} <span aria-hidden="true">→</span>
                 </a>
               </div>
-              <dl className="nv-hero-facts">
-                <div><dt>Community</dt><dd>Ubuntu Member · Debian</dd></div>
-                <div><dt>Core stack</dt><dd>Python · Rust</dd></div>
-                <div><dt>Location</dt><dd>Seoul · UTC+9</dd></div>
+              <dl className="profile-hero-facts">
+                <div><dt>{t("커뮤니티", "Community")}</dt><dd>Ubuntu Member · Debian</dd></div>
+                <div><dt>{t("주요 기술", "Core stack")}</dt><dd>Python · Rust</dd></div>
+                <div><dt>{t("위치", "Location")}</dt><dd>{t("서울 · UTC+9", "Seoul · UTC+9")}</dd></div>
               </dl>
             </div>
 
-            <figure className="nv-hero-visual">
+            <figure className="profile-hero-visual">
               <Image
                 src="/images/profile.jpg"
-                alt={t("보라색 픽셀 아트 캐릭터", "Purple pixel-art character")}
+                alt={t("Debian 행사 목걸이를 걸친 보라색 메타몽 인형", "Purple Ditto plush wearing a Debian event lanyard")}
                 width={480}
                 height={480}
-                className="nv-profile-image"
-                priority
+                className="profile-image"
+                sizes="(max-width: 767px) 240px, (max-width: 1023px) 320px, 400px"
+                preload
               />
-              <figcaption><span aria-hidden="true" />zeroday0619.dev</figcaption>
+              <figcaption>zeroday0619.dev</figcaption>
             </figure>
           </div>
         </section>
@@ -203,16 +204,15 @@ const Home = () => {
               <h2 id="experience-title">{t("업무 경험", "Work experience")}</h2>
               <p>
                 {t(
-                  "연구망 인프라 환경에서 실무 경험을 쌓고 있습니다.",
-                  "Building hands-on experience with research network infrastructure."
+                  "연구망 인프라 환경에서 실무 경험을 쌓았습니다.",
+                  "Gained hands-on experience with research network infrastructure."
                 )}
               </p>
             </header>
 
             <article className="experience-card">
-              <span className="card-corner" aria-hidden="true" />
               <div className="experience-primary">
-                <p className="card-label">{t("현재", "Current role")}</p>
+                <p className="card-label">{t("이전 경력", "Past role")}</p>
                 <h3>
                   {t(
                     "KISTI - 한국과학기술정보연구원",
@@ -233,11 +233,73 @@ const Home = () => {
                 <div>
                   <dt>{t("기간", "Duration")}</dt>
                   <dd>
-                    <time dateTime="2026-07">{t("2026년 7월", "July 2026")}</time>
-                    {t(" – 현재", " – Present")}
+                    <time dateTime="2026-07-22">{t("2026년 7월 22일", "July 22, 2026")}</time>
+                    {" – "}
+                    <time dateTime="2026-10-14">{t("2026년 10월 14일", "October 14, 2026")}</time>
                   </dd>
                 </div>
               </dl>
+            </article>
+          </div>
+        </section>
+
+        <section className="section" aria-labelledby="contributions-title">
+          <div className="site-container experience-layout">
+            <header className="section-heading">
+              <p className="page-kicker">{t("기여", "Contributions")}</p>
+              <h2 id="contributions-title">{t("오픈소스 기여", "Open-source contributions")}</h2>
+              <p>
+                {t(
+                  "Python 생태계의 호환성과 테스트 개선에 기여했습니다.",
+                  "Contributed compatibility and testing improvements to the Python ecosystem."
+                )}
+              </p>
+            </header>
+
+            <article className="project-card" aria-labelledby="uvloop-contribution-title">
+              <p className="card-label">uvloop (MagicStack)</p>
+              <div className="project-heading">
+                <h3 id="uvloop-contribution-title">{t("uvloop 기여자", "uvloop Contributor")}</h3>
+                <div className="tag-row">
+                  <span className="tag">{t("병합 완료", "Merged")}</span>
+                </div>
+              </div>
+              <ul className="feature-list">
+                <li>
+                  {t(
+                    "Python 3.11+ 호환성을 개선하는 수정에 기여했습니다.",
+                    "Contributed fixes to improve compatibility with Python 3.11+."
+                  )}
+                </li>
+                <li>
+                  {t(
+                    "Python 3.11 개발 버전을 테스트하도록 CI와 테스트 구성을 업데이트했습니다.",
+                    "Updated CI and testing to cover Python 3.11 development versions."
+                  )}
+                </li>
+              </ul>
+              <div className="card-actions">
+                <a className="button button-outline" href="https://github.com/MagicStack/uvloop" target="_blank" rel="noopener noreferrer">
+                  <SVG logo="github" width="16" height="16" />
+                  GitHub
+                </a>
+                <a
+                  className="button button-outline"
+                  href="https://github.com/MagicStack/uvloop/pull/473"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={t("uvloop 병합된 PR #473 보기", "View merged uvloop PR #473")}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="6" cy="5" r="2" />
+                    <circle cx="6" cy="19" r="2" />
+                    <circle cx="18" cy="19" r="2" />
+                    <path d="M6 7v10M18 17v-3a4 4 0 0 0-4-4h-4L6 6" />
+                  </svg>
+                  PR #473
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
             </article>
           </div>
         </section>
@@ -264,7 +326,6 @@ const Home = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="card-corner" aria-hidden="true" />
                 <p className="card-label">Membership</p>
                 <h3>Ubuntu Member</h3>
                 <p>{t("Ubuntu 커뮤니티 공식 멤버", "Official Ubuntu community member")}</p>
@@ -279,7 +340,6 @@ const Home = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="card-corner" aria-hidden="true" />
                 <p className="card-label">Community moderation</p>
                 <h3>Ubuntu Korea Community</h3>
                 <p>Community Moderation Team · Forum Moderator</p>
@@ -289,7 +349,6 @@ const Home = () => {
               </a>
 
               <article className="activity-card">
-                <span className="card-corner" aria-hidden="true" />
                 <p className="card-label">Conference organizing</p>
                 <h3>UbuCon Korea</h3>
                 <ul className="feature-list compact">
@@ -299,7 +358,6 @@ const Home = () => {
               </article>
 
               <article className="activity-card">
-                <span className="card-corner" aria-hidden="true" />
                 <p className="card-label">Debian community events</p>
                 <h3>MiniDebConf</h3>
                 <ul className="feature-list compact">
@@ -324,7 +382,6 @@ const Home = () => {
             <div className="feature-grid">
               {SKILL_CATEGORIES.map((category, index) => (
                 <article className="feature-card" key={category.title.en}>
-                  <span className="card-corner" aria-hidden="true" />
                   <span className="card-index" aria-hidden="true">0{index + 1}</span>
                   <h3>{category.title[language]}</h3>
                   <ul className="feature-list">
@@ -349,7 +406,6 @@ const Home = () => {
             <div className="project-grid">
               {PROJECTS.map((project) => (
                 <article className="project-card" key={project.name}>
-                  <span className="card-corner" aria-hidden="true" />
                   <div className="project-heading">
                     <h3>{project.name}</h3>
                     <div className="tag-row">
@@ -425,7 +481,6 @@ const Home = () => {
 
             <div className="profile-link-grid">
               <Link className="profile-link-card" href="/nintendo-switch">
-                <span className="card-corner" aria-hidden="true" />
                 <p className="card-label">Nintendo account</p>
                 <h3>Nintendo Switch</h3>
                 <p>{t("친구 코드와 모바일 추가 링크", "Friend code and mobile add link")}</p>
@@ -435,7 +490,6 @@ const Home = () => {
               </Link>
 
               <Link className="profile-link-card" href="/pokemon-champions">
-                <span className="card-corner" aria-hidden="true" />
                 <p className="card-label">Trainer profile</p>
                 <h3>Pokémon Champions</h3>
                 <p>{t("트레이너 ID와 친구 추가 안내", "Trainer ID and friend instructions")}</p>
@@ -467,7 +521,6 @@ const Home = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="card-corner" aria-hidden="true" />
                 <p className="card-label">Music profile</p>
                 <h3>Apple Music</h3>
                 <p>zeroday0619_jp</p>
@@ -482,7 +535,6 @@ const Home = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="card-corner" aria-hidden="true" />
                 <p className="card-label">Music profile</p>
                 <h3>Spotify</h3>
                 <p>zeroday0619</p>
@@ -514,7 +566,6 @@ const Home = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="card-corner" aria-hidden="true" />
                 <p className="card-label">Video channel</p>
                 <h3>YouTube</h3>
                 <p>@zeroday0619</p>
@@ -529,7 +580,6 @@ const Home = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="card-corner" aria-hidden="true" />
                 <p className="card-label">Live streaming</p>
                 <h3>CHZZK</h3>
                 <p>{t("라이브 스트리밍 채널", "Live streaming channel")}</p>

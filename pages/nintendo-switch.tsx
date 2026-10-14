@@ -75,7 +75,6 @@ export default function NintendoSwitchPage() {
         <section className="section" aria-label={t("친구 추가 정보", "Friend add details")}>
           <div className="site-container utility-grid">
             <article className="utility-card code-card">
-              <span className="card-corner" aria-hidden="true" />
               <div className="utility-card-heading">
                 <span className="utility-icon"><NintendoSwitchIcon /></span>
                 <div>
@@ -112,7 +111,6 @@ export default function NintendoSwitchPage() {
             </article>
 
             <article className="utility-card qr-card">
-              <span className="card-corner" aria-hidden="true" />
               <p className="card-label">QR resource</p>
               <h2>{t("QR 코드", "QR code")}</h2>
               <p>{t("이미지를 누르면 스캔하기 좋은 크기로 확대됩니다.", "Select the image to open a larger version for scanning.")}</p>

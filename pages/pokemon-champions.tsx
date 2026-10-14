@@ -58,7 +58,6 @@ export default function PokemonChampionsPage() {
               <span aria-hidden="true">←</span> {t("홈", "Home")}
             </Link>
             <div className="title-lockup">
-              <span className="title-mark" aria-hidden="true" />
               <div>
                 <p className="page-kicker">Trainer profile</p>
                 <h1 id="pokemon-title">Pokémon™ Champions</h1>
@@ -76,7 +75,6 @@ export default function PokemonChampionsPage() {
             </div>
 
             <article className="utility-card trainer-card">
-              <span className="card-corner" aria-hidden="true" />
               <p className="card-label">Pokémon Champions</p>
               <button
                 type="button"

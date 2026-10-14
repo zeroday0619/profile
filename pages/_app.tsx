@@ -8,7 +8,7 @@ import SEO from "@/components/SEO";
 const App = ({ Component, pageProps }: AppProps) => (
   <LanguageProvider>
     <Head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     </Head>
     <SEO />
     <Layout>
