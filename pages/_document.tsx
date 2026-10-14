@@ -1,4 +1,5 @@
-import { Html, Main, Head, NextScript } from "next/document";
+import NextDocument, { Html, Main, Head, NextScript, type DocumentContext } from "next/document";
+import { createDOMRenderer, renderToStyleElements } from "@fluentui/react-components";
 
 const themeBootstrapScript = `
   (() => {
@@ -33,5 +34,21 @@ const Document = () => (
     </body>
   </Html>
 );
+
+Document.getInitialProps = async (context: DocumentContext) => {
+  // Each response needs its own style cache so one request cannot omit another request's styles.
+  const renderer = createDOMRenderer();
+  const originalRenderPage = context.renderPage;
+  context.renderPage = () => originalRenderPage({
+    enhanceApp: (Application) => function StyledApplication(props) {
+      return <Application {...props} {...{ renderer }} />;
+    },
+  });
+  const initialProps = await NextDocument.getInitialProps(context);
+  return {
+    ...initialProps,
+    styles: <>{initialProps.styles}{renderToStyleElements(renderer)}</>,
+  };
+};
 
 export default Document;

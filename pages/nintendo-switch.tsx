@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from "@headlessui/react";
+import { Button, Dialog, DialogBody, DialogContent, DialogSurface, DialogTitle, DialogTrigger } from "@fluentui/react-components";
 import { useLanguage } from "@/contexts/LanguageContext";
 import SEO from "@/components/SEO";
 
@@ -27,6 +27,7 @@ export default function NintendoSwitchPage() {
   const { language, t } = useLanguage();
   const [copyStatus, setCopyStatus] = useState<CopyStatus>("idle");
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
+  const qrTriggerRef = useRef<HTMLButtonElement>(null);
   const copyResetTimeout = useRef<number | undefined>(undefined);
 
   useEffect(() => () => window.clearTimeout(copyResetTimeout.current), []);
@@ -83,15 +84,16 @@ export default function NintendoSwitchPage() {
                 </div>
               </div>
               <p>{t("아래 코드를 누르면 클립보드에 복사됩니다.", "Select the code to copy it to your clipboard.")}</p>
-              <button
+              <Button
                 type="button"
+                appearance="outline"
                 onClick={copyFriendCode}
                 className="copy-code-button"
                 aria-label={t("친구코드 복사", "Copy friend code")}
                 aria-describedby="friend-code-status"
               >
                 {FRIEND_CODE}
-              </button>
+              </Button>
               <p id="friend-code-status" className="status-text" role="status" aria-live="polite">
                 {copyStatus === "copied"
                   ? t("복사되었습니다.", "Copied.")
@@ -99,35 +101,78 @@ export default function NintendoSwitchPage() {
                     ? t("복사하지 못했습니다. 코드를 직접 선택해 주세요.", "Could not copy. Select the code manually.")
                     : t("코드를 눌러 복사하세요.", "Select the code to copy.")}
               </p>
-              <a
+              <Button
+                as="a"
+                appearance="primary"
                 href={NINTENDO_FRIEND_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="button button-primary"
+                className="button"
               >
                 <NintendoSwitchIcon width="16" height="16" />
                 {t("모바일에서 친구 추가", "Add friend on mobile")} <span aria-hidden="true">↗</span>
-              </a>
+              </Button>
             </article>
 
             <article className="utility-card qr-card">
               <p className="card-label">QR resource</p>
               <h2>{t("QR 코드", "QR code")}</h2>
               <p>{t("이미지를 누르면 스캔하기 좋은 크기로 확대됩니다.", "Select the image to open a larger version for scanning.")}</p>
-              <button
-                type="button"
-                onClick={() => setIsQrModalOpen(true)}
-                className="qr-button"
-                aria-label={t("QR 코드 확대 보기", "Open enlarged QR code")}
+              <Dialog
+                open={isQrModalOpen}
+                onOpenChange={(_, data) => setIsQrModalOpen(data.open)}
+                surfaceMotion={{
+                  onMotionFinish: (_, data) => {
+                    // Backdrop clicks also need to return focus after the closing surface is removed.
+                    if (data.direction === "exit" && !isQrModalOpen) {
+                      qrTriggerRef.current?.focus();
+                    }
+                  },
+                }}
               >
-                <Image
-                  src="/images/nintendo-switch-friend-code-qr.jpg"
-                  alt={t("닌텐도 스위치 친구코드 QR", "Nintendo Switch friend code QR")}
-                  width={320}
-                  height={320}
-                  loading="eager"
-                />
-              </button>
+                <DialogTrigger disableButtonEnhancement>
+                  <Button
+                    ref={qrTriggerRef}
+                    type="button"
+                    appearance="transparent"
+                    className="qr-button"
+                    aria-label={t("QR 코드 확대 보기", "Open enlarged QR code")}
+                  >
+                    <Image
+                      src="/images/nintendo-switch-friend-code-qr.jpg"
+                      alt={t("닌텐도 스위치 친구코드 QR", "Nintendo Switch friend code QR")}
+                      width={320}
+                      height={320}
+                      loading="eager"
+                    />
+                  </Button>
+                </DialogTrigger>
+                <DialogSurface className="modal-panel">
+                  <DialogBody>
+                    <DialogTitle
+                      action={
+                        <DialogTrigger disableButtonEnhancement>
+                          <Button type="button" appearance="subtle" className="modal-close">
+                            {t("닫기", "Close")}
+                          </Button>
+                        </DialogTrigger>
+                      }
+                    >
+                      {t("닌텐도 스위치 친구코드 QR", "Nintendo Switch friend code QR")}
+                    </DialogTitle>
+                    <DialogContent>
+                      <Image
+                        src="/images/nintendo-switch-friend-code-qr.jpg"
+                        alt={t("닌텐도 스위치 친구코드 QR", "Nintendo Switch friend code QR")}
+                        width={800}
+                        height={800}
+                        className="modal-image"
+                        loading="eager"
+                      />
+                    </DialogContent>
+                  </DialogBody>
+                </DialogSurface>
+              </Dialog>
             </article>
           </div>
 
@@ -138,33 +183,6 @@ export default function NintendoSwitchPage() {
           </div>
         </section>
       </div>
-
-      <Dialog open={isQrModalOpen} onClose={setIsQrModalOpen} className="modal-root">
-        <DialogBackdrop className="modal-backdrop" />
-        <div className="modal-positioner">
-          <DialogPanel className="modal-panel">
-            <div className="modal-heading">
-              <DialogTitle>{t("닌텐도 스위치 친구코드 QR", "Nintendo Switch friend code QR")}</DialogTitle>
-              <button
-                type="button"
-                onClick={() => setIsQrModalOpen(false)}
-                className="modal-close"
-                autoFocus
-              >
-                {t("닫기", "Close")}
-              </button>
-            </div>
-            <Image
-              src="/images/nintendo-switch-friend-code-qr.jpg"
-              alt={t("닌텐도 스위치 친구코드 QR", "Nintendo Switch friend code QR")}
-              width={800}
-              height={800}
-              className="modal-image"
-              loading="eager"
-            />
-          </DialogPanel>
-        </div>
-      </Dialog>
     </>
   );
 }

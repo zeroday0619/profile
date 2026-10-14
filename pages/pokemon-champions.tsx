@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
 import SEO from "@/components/SEO";
+import { Button } from "@fluentui/react-components";
 
 const TRAINER_ID = "0842 6903 5536";
 type CopyStatus = "idle" | "copied" | "error";
@@ -76,7 +77,7 @@ export default function PokemonChampionsPage() {
 
             <article className="utility-card trainer-card">
               <p className="card-label">Pokémon Champions</p>
-              <button
+              <Button
                 type="button"
                 onClick={copyTrainerId}
                 className="copy-code-button"
@@ -84,7 +85,7 @@ export default function PokemonChampionsPage() {
                 aria-describedby="trainer-id-status"
               >
                 {TRAINER_ID}
-              </button>
+              </Button>
               <p id="trainer-id-status" className="status-text" role="status" aria-live="polite">
                 {copyStatus === "copied"
                   ? t("복사되었습니다.", "Copied.")

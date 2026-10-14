@@ -24,6 +24,16 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## TypeScript tooling
+
+Type checking and Next.js builds use TypeScript 7. The `lint` script uses [Oxlint](https://oxc.rs/docs/guide/usage/linter/migrate-from-eslint.html), which parses TypeScript without the TypeScript 6 compiler API. `.oxlintrc.json` preserves the previous Next.js, React, accessibility, and TypeScript lint rules. JavaScript plugins retain the React Hooks checks and rules that are not implemented natively by Oxlint. ESLint remains a development dependency to satisfy those plugins' peer dependency.
+
+Run `corepack yarn typecheck`, `corepack yarn lint`, and `corepack yarn build` to validate updates. Preserve `yarn.lock` when installing dependencies.
+
+## Cloudflare build compatibility
+
+The Cloudflare scripts require Node.js 22.15+ on the 22.x release line or Node.js 23.5+ and run OpenNext through `scripts/opennext.mjs`. Its module loader applies the [upstream preview manifest fix](https://github.com/opennextjs/opennextjs-cloudflare/pull/1356) in memory because OpenNext 1.20.11 otherwise fails to load Next.js 16.4's `server/preview-props.json`. The loader preserves the actual manifest contents and rejects unexpected adapter changes. Remove the wrapper once the installed adapter includes the fix.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

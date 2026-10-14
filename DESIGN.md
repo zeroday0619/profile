@@ -4,7 +4,7 @@
 
 This document replaces the previous NVIDIA design specification. All routes use a Fluent 2 inspired visual system: neutral surfaces, blue emphasis, readable typography, rounded geometry, and restrained elevation. Existing profile information, external destinations, Korean and English translations, and utility-page interactions remain part of the product.
 
-The implementation uses semantic CSS custom properties and the existing React components. It does not require the Fluent UI package or additional production dependencies. This is a site-specific interpretation of Fluent 2, not a reproduction of Microsoft's marketing homepage or a claim of Fluent UI component certification.
+The implementation combines semantic CSS custom properties with Fluent UI React v9 controls. `FluentProvider` follows the stored light or dark theme. Shared buttons and the Nintendo QR dialog use the official components. Site-specific content layouts, navigation, typography, and responsive geometry retain the visual direction below. Griffel styles are collected during Pages Router server rendering.
 
 Official references:
 
@@ -75,7 +75,7 @@ Use `viewport-fit=cover` with safe-area insets for notched screens. Dialogs must
 
 - Preserve semantic headings, landmarks, alternative text, external-link protection, and the skip-to-content link.
 - Show a clearly visible keyboard focus outline. Hover must not be the only state indicator.
-- Keep menu expansion state, Escape dismissal, and focus return through the existing Headless UI components.
+- Keep menu expansion state, Escape dismissal, and focus return through Headless UI Disclosure and Fluent UI Dialog.
 - Keep copy success and failure feedback in live regions. Preserve the original friend codes and trainer IDs.
 - Use `#75b6e7` for brand text on dark surfaces. Store explicit language and theme choices using the existing storage contract. Both languages and both themes must work across every route.
 - Honor `prefers-reduced-motion` by removing nonessential transitions and smooth scrolling.

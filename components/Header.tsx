@@ -2,6 +2,8 @@ import ActiveLink from "./ActiveLink";
 import ThemeController from "./ThemeController";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Disclosure } from "@headlessui/react";
+import { Button } from "@fluentui/react-components";
+import type { KeyboardEvent } from "react";
 
 const Header = () => {
   const { language, toggleLanguage, t } = useLanguage();
@@ -42,7 +44,7 @@ const Header = () => {
               </div>
 
               <div className="site-controls">
-                <button
+                <Button
                   type="button"
                   onClick={toggleLanguage}
                   className="site-control-button"
@@ -53,12 +55,13 @@ const Header = () => {
                   }
                 >
                   <span aria-hidden="true">{language === "ko" ? "EN" : "KO"}</span>
-                </button>
+                </Button>
                 <ThemeController />
                 <Disclosure.Button
+                  as={Button}
                   className="site-menu-button"
                   aria-label={open ? t("메뉴 닫기", "Close menu") : t("메뉴 열기", "Open menu")}
-                  onKeyDown={(event) => {
+                  onKeyDown={(event: KeyboardEvent<HTMLButtonElement>) => {
                     if (event.key === "Escape" && open) {
                       event.preventDefault();
                       close();

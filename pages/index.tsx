@@ -3,6 +3,7 @@ import Link from "next/link";
 import SVG from "@/components/Logos";
 import { useLanguage } from "@/contexts/LanguageContext";
 import SEO from "@/components/SEO";
+import { Button } from "@fluentui/react-components";
 
 type Language = "ko" | "en";
 
@@ -420,10 +421,10 @@ const Home = () => {
                   <div className="card-actions">
                     {project.links.github && (
                       project.private ? (
-                        <button className="button button-disabled" type="button" disabled>
+                        <Button className="button button-disabled" type="button" disabled>
                           <SVG logo="github" width="16" height="16" />
                           {t("비공개 저장소", "Private repository")}
-                        </button>
+                        </Button>
                       ) : (
                         <a className="button button-outline" href={project.links.github} target="_blank" rel="noopener noreferrer">
                           <SVG logo="github" width="16" height="16" />

@@ -1,68 +1,18 @@
 "use client";
 
-import { useEffect, useSyncExternalStore } from "react";
+import { Button } from "@fluentui/react-components";
 import { useLanguage } from "@/contexts/LanguageContext";
-
-type Theme = "light" | "dark";
-
-const THEME_STORAGE_KEY = "theme";
-const THEME_CHANGE_EVENT = "theme-change";
-let currentTheme: Theme = "light";
-
-const getThemeSnapshot = (): Theme => {
-  try {
-    const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-
-    currentTheme =
-      storedTheme === "dark" || storedTheme === "oneui-dark" ? "dark" : "light";
-  } catch {
-    // The in-memory value keeps the control usable when storage is unavailable.
-  }
-
-  return currentTheme;
-};
-
-const getServerThemeSnapshot = (): Theme => "light";
-
-const subscribeToTheme = (onStoreChange: () => void) => {
-  window.addEventListener("storage", onStoreChange);
-  window.addEventListener(THEME_CHANGE_EVENT, onStoreChange);
-
-  return () => {
-    window.removeEventListener("storage", onStoreChange);
-    window.removeEventListener(THEME_CHANGE_EVENT, onStoreChange);
-  };
-};
+import { useTheme } from "@/contexts/ThemeContext";
 
 const ThemeController = () => {
   const { t } = useLanguage();
-  const theme = useSyncExternalStore(
-    subscribeToTheme,
-    getThemeSnapshot,
-    getServerThemeSnapshot
-  );
+  const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-  }, [theme]);
-
-  const handleToggle = () => {
-    const newTheme: Theme = isDark ? "light" : "dark";
-    currentTheme = newTheme;
-    document.documentElement.setAttribute("data-theme", newTheme);
-    try {
-      window.localStorage.setItem(THEME_STORAGE_KEY, newTheme);
-    } catch {
-      // The document theme remains authoritative when storage is unavailable.
-    }
-    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
-  };
-
   return (
-    <button
+    <Button
       type="button"
-      onClick={handleToggle}
+      onClick={toggleTheme}
       className="site-control-button"
       aria-label={
         isDark
@@ -105,7 +55,7 @@ const ThemeController = () => {
       <span className="site-control-label">
         {isDark ? t("밝게", "Light") : t("어둡게", "Dark")}
       </span>
-    </button>
+    </Button>
   );
 };
 
